@@ -1,7 +1,7 @@
 <hr>
 {% if user.is_authenticated %}
-   <a href="">Cerrar sesión</a>
-{% else %}
+   <a href="{% url 'logout' %}">Cerrar sesión </a>
+   {% else %}
    <a href="{% url 'register_user' %}">Registrarse</a>
    <a href="{% url 'login' %}">Iniciar Sesión</a>
 {% endif %}
