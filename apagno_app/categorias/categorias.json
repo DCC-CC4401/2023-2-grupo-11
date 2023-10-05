@@ -1,0 +1,30 @@
+[
+{
+    "model": "categorias.categoria",
+    "pk": 1,
+    "fields": {
+        "nombre": "Concierto"
+    }
+},
+{
+    "model": "categorias.categoria",
+    "pk": 2,
+    "fields": {
+        "nombre": "Carpool"
+    }
+},
+{
+    "model": "categorias.categoria",
+    "pk": 3,
+    "fields": {
+        "nombre": "Cine"
+    }
+},
+{
+    "model": "categorias.categoria",
+    "pk": 4,
+    "fields": {
+        "nombre": "Completada"
+    }
+}
+]
