@@ -125,4 +125,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Tells the app to use the User model defined in perfil_apagno_app/models.py
-AUTH_USER_MODEL = 'todoapp.User'
+AUTH_USER_MODEL = 'perfil_apagno_app.User'
