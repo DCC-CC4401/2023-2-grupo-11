@@ -7,7 +7,7 @@ from perfil_apagno_app.models import User
 # Create your views here.
 
 def initPerfil(request):
-    return HttpResponse("Pagina de Perfil de usuario")
+    return render(request, "perfil_apagno_app/index.html")
 
 def register_user(request):
     if request.method == 'GET': # When loading register page
@@ -26,3 +26,19 @@ def register_user(request):
 
      #Redireccionar la página /tareas
      return HttpResponseRedirect('')
+
+
+from django.contrib.auth import authenticate, login, logout
+
+def login_user(request):
+    if request.method == 'GET':
+        return render(request,"perfil_apagno_app/login.html")
+    if request.method == 'POST':
+        username = request.POST['username']
+        contraseña = request.POST['contraseña']
+        usuario = authenticate(username=username,password=contraseña)
+        if usuario is not None:
+            login(request,usuario)
+            return HttpResponseRedirect('/testeo2')
+        else:
+            return HttpResponseRedirect('/register')
