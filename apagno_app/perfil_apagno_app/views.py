@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 # importing custom User class
 from perfil_apagno_app.models import User       
+# Imports for login and logout aunthentication
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -28,7 +30,6 @@ def register_user(request):
      return HttpResponseRedirect('')
 
 
-from django.contrib.auth import authenticate, login, logout
 
 def login_user(request):
     if request.method == 'GET':
@@ -42,3 +43,8 @@ def login_user(request):
             return HttpResponseRedirect('/testeo2')
         else:
             return HttpResponseRedirect('/register')
+        
+ 
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect('/testeo2')
