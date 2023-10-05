@@ -13,5 +13,3 @@ class User(AbstractUser):
   pronouns = models.CharField(max_length=5,choices=pronounsChoices)
   nickname = models.CharField(max_length=30)
 
-
-  "what"
