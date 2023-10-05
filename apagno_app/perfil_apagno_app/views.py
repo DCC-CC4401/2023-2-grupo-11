@@ -24,7 +24,7 @@ def register_user(request):
      mail = request.POST['mail']
 
      # Creating new user
-     user = User.objects.create_user(username=nombre, password=contraseña, email=mail, nickname=apodo, pronoun=pronombre)
+     user = User.objects.create_user(username=nombre, password=contraseña, email=mail, nickname=apodo, pronouns=pronombre)
 
      #Redireccionar la página /tareas
      return HttpResponseRedirect('')
@@ -40,11 +40,11 @@ def login_user(request):
         usuario = authenticate(username=username,password=contraseña)
         if usuario is not None:
             login(request,usuario)
-            return HttpResponseRedirect('/testeo2')
+            return HttpResponseRedirect('testeo2')
         else:
-            return HttpResponseRedirect('/register')
+            return HttpResponseRedirect('register')
         
  
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect('/testeo2')
+    return HttpResponseRedirect('testeo2')
