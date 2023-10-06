@@ -1,14 +1,24 @@
 from django.db import models
 
+
 # Create your models here.
 from django.utils import timezone
-from categorias.models import Categoria
 
-class Tarea(models.Model):  # Todolist able name that inherits models.Model
-    titulo = models.CharField(max_length=250)  # un varchar
-    contenido = models.TextField(blank=True)  # un text
-    fecha_creación = models.DateField(default=timezone.now().strftime("%Y-%m-%d"))  # un date
-    categoria = models.ForeignKey(Categoria, default="general", on_delete=models.CASCADE)  # la llave foránea
+class Categorias(models.Model):
+    nombre = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.titulo  # name to be shown when called
+        return self.nombre
+
+class nuevoEvento(models.Model):
+    nombre = models.CharField(max_length=100)
+    host = models.CharField(max_length=100)
+    fecha = models.DateField(default=timezone.now().strftime("%Y-%m-%d"))
+    hora = models.TimeField(default=timezone.now().strftime("%H:%M"))
+    lugar = models.CharField(max_length=100)
+    descripcion = models.CharField(max_length=250, blank=True)
+    categoria = models.ForeignKey(Categorias, default='Sin categoria', on_delete=models.CASCADE)#models.CharField(max_length=100, default='Sin categoria')
+    #imagen = models.ImageField(upload_to='eventos/', blank=True)
+    
+    def __str__(self):
+        return self.nombre

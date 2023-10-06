@@ -1,30 +1,31 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from perfil_apagno_app.models import Tarea
-from categorias.models import Categoria
+from perfil_apagno_app.forms import NuevoEventoForm
+from perfil_apagno_app.models import *
+
 
 # Create your views here.
 
 def initPerfil(request):
     return HttpResponse("Pagina de Perfil de usuario")
 
-def tareas(request): #the index view
-    mis_tareas = Tarea.objects.all()  # quering all todos with the object manager
-    categorias = Categoria.objects.all()  # getting all categories with object manager
+def creacionEvento(request):
+    mis_eventos = nuevoEvento.objects.all()
+    categorias = Categorias.objects.all()
+    #context = {}
+    #context['form'] = NuevoEventoForm()
 
     if request.method == "GET":
-        return render(request, "perfil_app/index.html", {"tareas": mis_tareas, "categorias": categorias})
+       #form = NuevoEventoForm()
+        return render(request, 'perfil_app/creacionEvento.html', {"eventos": mis_eventos, "categorias": categorias})
     
-    if request.method == "POST":  # revisar si el método de la request es POST
-        if "taskAdd" in request.POST:  # verificar si la request es para agregar una tarea (esto está definido en el button)
-            titulo = request.POST["titulo"]  # titulo de la tarea
-            
-            nombre_categoria = request.POST["selector_categoria"]  # nombre de la categoria
-            categoria = Categoria.objects.get(nombre=nombre_categoria)  # buscar la categoría en la base de datos
-            
-            contenido = request.POST["contenido"]  # contenido de la tarea
-            
-            nueva_tarea = Tarea(titulo=titulo, contenido=contenido, categoria=categoria)  # Crear la tarea
-            nueva_tarea.save()  # guardar la tarea en la base de datos.
-
-            return redirect("/tareas")  # recargar la página.
+    if request.method == "POST":
+        if "eventAdd" in request.POST:
+            nombre = request.POST["nombre"]
+            host = request.POST["host"]
+            lugar = request.POST["lugar"]
+            descripcion = request.POST["descripcion"]
+            categoria = Categorias.objects.get(nombre=request.POST["selector_categoria"])
+            nuevo_evento = nuevoEvento(nombre=nombre, host=host, lugar=lugar, descripcion=descripcion, categoria=categoria)
+            nuevo_evento.save()
+            return redirect('/perfil/crear_evento')
