@@ -2,7 +2,7 @@
 <html >
     <head>
         <meta charset="UTF-8">
-        <title>Apaño! Creacion de evento</title>
+        <title>Apaño! Creación de evento</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
     <body>
@@ -10,7 +10,7 @@
 
             <!-- Encabezado de la página-->
                 <h1>Apaño!</h1>
-                <p class="tagline">Creacion de evento</p>
+                <p class="tagline">Creación de evento</p>
             <!-- Fin encabezado -->
                 <form action="" method="post">
                 {% csrf_token %} <!-- csrf token for basic security -->
@@ -33,12 +33,20 @@
                         <textarea  id="host" class="form-control" placeholder="¿Quién planea el evento?" name="host" required></textarea>
                     </div>
                     <div class="form-group">
+                        <label for="fecha">Fecha del evento</label>
+                        <textarea  id="fecha" class="form-control" placeholder="¿Qué día se realizará el evento?" name="fecha" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Hora del evento</label>
+                        <textarea  id="hora" class="form-control" placeholder="¿A qué hora?" name="hora" required></textarea>
+                    </div>
+                    <div class="form-group">
                         <label for="lugar">Localización</label>
-                        <textarea  id="lugar" class="form-control" placeholder="¿Donde?" name="lugar" required></textarea>
+                        <textarea  id="lugar" class="form-control" placeholder="¿Dónde?" name="lugar" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="descripcion">Descripcion</label>
-                        <textarea  id="descripcion" class="form-control" placeholder="¿Sobre que es el evento?" name="descripcion" required></textarea>
+                        <textarea  id="descripcion" class="form-control" placeholder="¿Sobre qué es el evento?" name="descripcion" required></textarea>
                     </div>
                     <!-- Fin formulario de nueva tarea -->
                     <!-- Botones para agregar o eliminar tarea -->
