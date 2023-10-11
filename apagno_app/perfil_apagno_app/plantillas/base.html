@@ -1,15 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Base</title>
-    <link rel="stylesheet" type="text/css" href="style/base.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/base.css' %}">
 </head>
 <body>
     <div id="navbar">
         <a id="logo" href="destacados.html">
-            <img src="imag/logo_sin_fondo.png" alt="Logo"> <!--Aquí colocar el logo -->
+            <img src="{% static 'imag/logo_sin_fondo.png' %}" alt="Logo"> <!--Aquí colocar el logo -->
         </a>
         <div id="search">
             <input type="text" placeholder="Buscar eventos por palabra">

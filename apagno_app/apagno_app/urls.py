@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from apagno_app.views import index
+from apagno_app.views import index, destacados_logged
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('testeo/', index),
     path('perfil_apagno_app/', include('perfil_apagno_app.urls')),
+    path('eventos-destacados/', destacados_logged),
 ]
