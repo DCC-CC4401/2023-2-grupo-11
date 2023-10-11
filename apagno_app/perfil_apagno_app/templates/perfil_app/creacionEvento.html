@@ -12,15 +12,16 @@
                 <h1>Apaño!</h1>
                 <p class="tagline">Creación de evento</p>
             <!-- Fin encabezado -->
+                    <!-- Formulario de nueva tarea-->
                 <form action="" method="post">
                 {% csrf_token %} <!-- csrf token for basic security -->
-                    <!-- Formulario de nueva tarea-->
-                    <div class="form-group">
-                        <label for="nombre">Nombre del eventoa</label>
-                        <input type="text" id="nombre" class="form-control" placeholder="¿Qué planearás?" name="nombre" required>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre del evento</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="¿Qué planearás?">
                     </div>
-                    <div class="form-group">
-                        <label for="categoria">Categoria</label>
+                    <!-- Falta categoría-->
+                    <div >
+                        <label for="categoria">Categoría</label>
                         <select id="categoria"  class="form-control" name="selector_categoria">
                         <option class="disabled" value="">Elige una categoría</option>
                         {% for categoria in categorias %}
@@ -28,44 +29,31 @@
                         {% endfor %}
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="host">Host del evento</label>
-                        <textarea  id="host" class="form-control" placeholder="¿Quién planea el evento?" name="host" required></textarea>
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" placeholder="¿Qué día se realizará el evento?">
                     </div>
-                    <div class="form-group">
-                        <label for="fecha">Fecha del evento</label>
-                        <textarea  id="fecha" class="form-control" placeholder="¿Qué día se realizará el evento?" name="fecha" required></textarea>
+                    <div class="mb-3">
+                        <label for="hora" class="form-label">Hora</label>
+                        <input type="time" class="form-control" id="hora" placeholder="¿A qué hora se realizará?">
                     </div>
-                    <div class="form-group">
-                        <label for="hora">Hora del evento</label>
-                        <textarea  id="hora" class="form-control" placeholder="¿A qué hora?" name="hora" required></textarea>
+                    <div class="mb-3">
+                        <label for="lugar" class="form-label">Localización</label>
+                        <input type="text" class="form-control" id="lugar" placeholder="¿Dónde se realizará?">
                     </div>
-                    <div class="form-group">
-                        <label for="lugar">Localización</label>
-                        <textarea  id="lugar" class="form-control" placeholder="¿Dónde?" name="lugar" required></textarea>
+                    <div class="mb-3">
+                        <label for="descripción" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descripción" placeholder="Describe el evento que planeas"rows="3"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="descripcion">Descripcion</label>
-                        <textarea  id="descripcion" class="form-control" placeholder="¿Sobre qué es el evento?" name="descripcion" required></textarea>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Imagen</label>
+                        <input class="form-control" type="file" id="formFile">
                     </div>
-                    <!-- Fin formulario de nueva tarea -->
-                    <!-- Botones para agregar o eliminar tarea -->
                     <div class="row">
                         <button class="btn btn-primary" name="eventAdd" type="submit"><i class="fa fa-plus icon"></i>Agregar evento</button>
                         <button disabled class="btn btn-danger" name="eventDelete" formnovalidate="" type="submit" onclick="$('input#sublist').click();"><i class="fa fa-trash-o icon"></i>Eliminar evento</button>
                     </div>
-                    <!-- Fin botones para agregar o eliminar tarea -->
-                     <!-- Lista de las tareas existentes -->
-                    <ul class="eventList">
-                    {% for evento in eventos %} <!-- django template lang - for loop -->
-                        <li class="eventItem">
-                            <input type="checkbox" class="eventCheckbox" name="checkedbox" id="{{ evento.id }}" value="{{ evento.id }}">
-                            <label for="{{ evento.id }}"><span class="complete-">{{ evento.nombre }}</span></label>
-                            <span class="categoria-{{ evento.categoria }}">{{ evento.categoria }}</span>
-                        </li>
-                    {% endfor %}
-                    </ul>
-                <!-- Fin de la lista de tareas existentes-->
+                
                 </form>
         </div><!-- container -->
 
