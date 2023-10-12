@@ -1,10 +1,10 @@
 /* Cambiar el borde de los inputs a verde */
 .form-control {
-    border: 1px solid #00ff00; /* Esto es un verde básico, puedes usar cualquier otro tono de verde que prefieras. */
+    border: 1px solid #00ff00 !important; /* Esto es un verde básico, puedes usar cualquier otro tono de verde que prefieras. */
 }
 
 /* Cambiar el borde de los inputs a verde cuando están enfocados */
 .form-control:focus {
-    border-color: #06735d;
-    box-shadow: 0 0 0 0.2rem rgba(31, 154, 31, 0.25); /* Esta línea agrega un resplandor alrededor del input cuando está enfocado. Puedes ajustar el color y la opacidad como prefieras. */
+    border-color: #06735d !important;
+    box-shadow: 0 0 0 0.2rem rgba(31, 154, 31, 0.25)!important; /* Esta línea agrega un resplandor alrededor del input cuando está enfocado. Puedes ajustar el color y la opacidad como prefieras. */
 }
