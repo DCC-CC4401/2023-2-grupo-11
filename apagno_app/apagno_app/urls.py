@@ -20,6 +20,6 @@ from apagno_app.views import index, destacados_logged
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('testeo/', index),
-    path('perfil_apagno_app/', include('perfil_apagno_app.urls')),
+    path('perfil/', include('perfil_apagno_app.urls')),
     path('eventos-destacados/', destacados_logged),
 ]
