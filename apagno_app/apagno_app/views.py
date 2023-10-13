@@ -5,4 +5,4 @@ def index(request):
     return HttpResponse("Hola, este es un testeo")
 
 def destacados_logged(request):
-    return render(request, "base.html")
+    return render(request, "destacados.html")

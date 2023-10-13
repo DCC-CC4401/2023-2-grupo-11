@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from apagno_app.views import index, destacados_logged
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,3 +25,6 @@ urlpatterns = [
     path('perfil_apagno_app/', include('perfil_apagno_app.urls')),
     path('eventos-destacados/', destacados_logged),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
