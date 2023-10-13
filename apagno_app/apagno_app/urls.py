@@ -15,15 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 from apagno_app.views import index, destacados_logged
 from django.conf import settings
 from django.conf.urls.static import static
+=======
+from apagno_app.views import index, destacados_logged, destacados
+>>>>>>> 8433d6ba7485235a26698954b5f97b666e8cb32f
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('testeo/', index),
     path('perfil_apagno_app/', include('perfil_apagno_app.urls')),
-    path('eventos-destacados/', destacados_logged),
+    path('eventos-destacados-logged/', destacados_logged),
+    path('eventos-destacados/', destacados),
 ]
 
 if settings.DEBUG:

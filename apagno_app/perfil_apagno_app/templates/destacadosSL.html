@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 
+<<<<<<< HEAD
 {% block title %}Destacados de la Semana{% endblock %}
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'perfil_apagno/static/style/destacados.css' %}">
+=======
+{% load static %}
+
+{% block title %}Destacados de la Semana{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static '/static/style/destacados.css' %}">
+>>>>>>> 8433d6ba7485235a26698954b5f97b666e8cb32f
 {% endblock %}
 
 <!--{% block navbar %}

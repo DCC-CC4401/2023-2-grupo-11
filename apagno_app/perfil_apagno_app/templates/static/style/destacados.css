@@ -1,0 +1,39 @@
+/* Estilos específicos para destacados.html */
+#destacados {
+    margin: 20px;
+    text-align: center;
+}
+
+#crear-evento {
+    margin: 20px;
+}
+
+.evento {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.evento img {
+    max-width: 100%;
+    height: auto;
+}
+
+#mostrar-mas {
+    margin: 20px;
+    background-color: #f1a425;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#mostrar-mas:hover {
+    background-color: #ee7a1f;
+    transform: scale(1.05);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+}
