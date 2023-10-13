@@ -6,7 +6,7 @@
         <title>Apaño! Creación de evento</title>
         <link rel="stylesheet" type="text/css" href="{% static 'style/base.css' %}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{% static 'perfil_app/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
         <style>
             .form-control:focus{border-color: #13a073;  box-shadow: 0 0 0 0.2rem rgba(0, 255, 0, 0.25); } 
             .has-error .form-control:focus{box-shadow: none; -webkit-box-shadow: none;}
@@ -50,12 +50,12 @@
                 {% csrf_token %} <!-- csrf token for basic security -->
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre del evento</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="¿Qué planearás?">
+                        <input type="text" id="nombre" class="form-control" placeholder="¿Qué planearás?" name='nombre' required/>
                     </div>
                     <!-- Falta categoría-->
                     <div >
                         <label for="categoria">Categoría</label>
-                        <select id="categoria"  class="form-control" name="selector_categoria">
+                        <select id="categoria"  class="form-control" name="selector_categoria"/>
                         <option class="disabled" value="">Elige una categoría</option>
                         {% for categoria in categorias %}
                             <option class="" value="{{ categoria.nombre }}" name="{{ categoria.nombre }}">{{ categoria.nombre }}</option>
@@ -64,24 +64,26 @@
                     </div>
                     <div class="mb-3">
                         <label for="fecha" class="form-label">Fecha</label>
-                        <input type="date" class="form-control" id="fecha" placeholder="¿Qué día se realizará el evento?">
+                        <input type="date" id="fecha" class="form-control"  placeholder="¿Qué día se realizará el evento?" name="fecha" required/>
                     </div>
                     <div class="mb-3">
                         <label for="hora" class="form-label">Hora</label>
-                        <input type="time" class="form-control" id="hora" placeholder="¿A qué hora se realizará?">
+                        <input type="time" id="hora" class="form-control" placeholder="¿A qué hora se realizará?" name="hora" required/>
                     </div>
                     <div class="mb-3">
                         <label for="lugar" class="form-label">Localización</label>
-                        <input type="text" class="form-control" id="lugar" placeholder="¿Dónde se realizará?">
+                        <input type="text" id="lugar" class="form-control" placeholder="¿Dónde se realizará?" name="lugar" required/>
                     </div>
                     <div class="mb-3">
-                        <label for="descripción" class="form-label">Descripción</label>
-                        <textarea class="form-control" id="descripción" placeholder="Describe el evento que planeas"rows="3"></textarea>
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea id="descripcion" class="form-control" placeholder="Describe el evento que planeas"rows="3" name="descripcion"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Imagen</label>
-                        <input class="form-control" type="file" id="formFile" accept="image/png, image/jpeg">
+                        <label for="imagen" class="form-label">Imagen</label>
+                        <input type="file" id="imagen" class="form-control" accept="image/png, image/jpeg" name="imagen"/>
                     </div>
+                    <!-- Fin formulario de nueva tarea -->
+                    <!-- Botones para agregar o eliminar tarea -->
                     <div class="row">
                         <button class="btn btn-primary" name="eventAdd" type="submit"><i class="fa fa-plus icon"></i>Agregar evento</button>
                         <button disabled class="btn btn-danger" name="eventDelete" formnovalidate="" type="submit" onclick="$('input#sublist').click();"><i class="fa fa-trash-o icon"></i>Eliminar evento</button>

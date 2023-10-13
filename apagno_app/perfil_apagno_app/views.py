@@ -22,11 +22,11 @@ def creacionEvento(request):
     if request.method == "POST":
         if "eventAdd" in request.POST:
             nombre = request.POST['nombre']#.get('nombre',False)
-            host = request.POST['host']#.get('host',False)
+            host = request.POST.get('host','default value')
             lugar = request.POST['lugar']#.get('lugar',False)
             descripcion = request.POST['descripcion']#.get('descripcion',False)
             categoria = Categorias.objects.get(nombre=request.POST["selector_categoria"])
-            imagen = request.FILES['imagen']#.get('imagen',False)
+            imagen = request.FILES.get('imagen',False)
             nuevo_evento = nuevoEvento(nombre=nombre, host=host, lugar=lugar, descripcion=descripcion, categoria=categoria, imagen=imagen)
             nuevo_evento.save()
             return redirect('/perfil_apagno_app/crear_evento')

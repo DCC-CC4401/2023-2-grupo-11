@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 from django.utils import timezone
 
@@ -9,6 +8,11 @@ class Categorias(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+cats = Categorias.objects.all().values_list('nombre', 'nombre')
+cats_list = []
+for item in cats:
+    cats_list.append(item)
 
 class nuevoEvento(models.Model):
     nombre = models.CharField(max_length=100)
