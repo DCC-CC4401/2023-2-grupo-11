@@ -118,9 +118,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-#STATIC_URL = 'static/'
-STATIC_URL = 'perfil_apagno_app/static/'
-STATICFILES_DIRS = [BASE_DIR / 'perfil_apagno_app/static/']
+# settings.py
+
+STATIC_URL = '/static/'  # Cambia esta URL según tus necesidades
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "perfil_apagno_app/static"),
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

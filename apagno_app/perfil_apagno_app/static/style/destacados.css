@@ -1,0 +1,81 @@
+/* Estilos para la página de Destacados */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #dfedeb; /* Fondo de toda la página (verde claro) */
+}
+
+#destacados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra horizontalmente los elementos internos */
+    /* align-items: center; *//* Elimina esta propiedad */
+    /* text-align: center; *//* Esta propiedad no es necesaria aquí */
+    padding: 20px;
+    background-color: #dfedeb; /* Fondo de la sección destacados */
+    height: 100vh; /* Ajusta la altura según tus necesidades (100vh significa 100% de la altura de la ventana) */
+}
+
+#destacados h2 {
+    font-size: 36px !important;
+    color: #06836c !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.eventos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.evento {
+    width: calc(25% - 20px); /* Ancho de cada evento */
+    background-color: #ebd889; /* Color de fondo de los eventos (amarillo claro) */
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.evento h3 {
+    font-size: 18px;
+    color: #06836c; /* Título del evento en color verde oscuro */
+    margin: 0;
+}
+
+.evento img {
+    max-width: 100%;
+    height: auto;
+}
+
+.evento p {
+    color: #f1a425; /* Color naranja claro para la fecha */
+    margin: 5px 0;
+}
+
+.evento a {
+    color: #ee7a1f; /* Color naranja oscuro para los enlaces */
+    text-decoration: none;
+}
+
+#mostrar-mas {
+    background-color: #06836c; /* Fondo del botón (verde oscuro) */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px auto;
+    display: block;
+    cursor: pointer;
+}
+
+
