@@ -14,6 +14,7 @@ cats_list = []
 for item in cats:
     cats_list.append(item)
 
+# nuevoEvento genera un evento nuevo con los siguientes atributos: nombre, host, fecha, hora, lugar, descripcion, categoria, imagen
 class nuevoEvento(models.Model):
     nombre = models.CharField(max_length=100)
     host = models.CharField(max_length=100)
@@ -22,7 +23,7 @@ class nuevoEvento(models.Model):
     lugar = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=250, blank=True)
     categoria = models.ForeignKey(Categorias, default='Sin categoria', on_delete=models.CASCADE)#models.CharField(max_length=100, default='Sin categoria')
-    imagen = models.ImageField(upload_to='eventos_images/', blank=True)
+    imagen = models.FileField(upload_to='eventos_images/', blank=True)
     
     def __str__(self):
         return self.nombre
