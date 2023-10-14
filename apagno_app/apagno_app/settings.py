@@ -120,15 +120,10 @@ USE_TZ = True
 
 # settings.py
 
-<<<<<<< HEAD
 STATIC_URL = '/static/'  # Cambia esta URL según tus necesidades
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "perfil_apagno_app/static"),
 ]
-=======
-STATIC_URL = 'perfil_apgno_app/templates/static/'  # Cambia esta URL según tus necesidades
-STATICFILES_DIRS = [BASE_DIR / 'perfil_apagno_app/templates/static']
->>>>>>> 8433d6ba7485235a26698954b5f97b666e8cb32f
 
 
 # Default primary key field type

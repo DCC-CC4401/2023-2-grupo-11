@@ -2,17 +2,13 @@
 
 {% load static %}
 
-<<<<<<< HEAD
-{% block title %}Destacados de la Semana{% endblock %}
-{% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'style/destacados.css' %}">
+{% block title %}
+    <h2 style="text-align: center; display: flex; justify-content: center; align-items: center;">Destacados de la Semana</h2>
+{% endblock %}
 
-=======
 
-{% block title %}Destacados de la Semana{% endblock %}
 {% block extra_css %}
-    <link rel="stylesheet" type="text/css" href="{% static '/static/style/destacados.css' %}">
->>>>>>> 8433d6ba7485235a26698954b5f97b666e8cb32f
+    <link rel="stylesheet" type="text/css" href="{% static 'style/destacados.css' %}">
 {% endblock %}
 
 {% block navbar %}
@@ -25,14 +21,35 @@
 {% block content %}
     <h2>Destacados de la Semana</h2>
 
-    <div class="evento">
-        <h3>Nombre del Evento 1</h3>
-        <img src="{% static 'imagen_evento_1.jpg' %}" alt="Evento 1">
-        <p>Fecha: 01 de enero, 2024</p>
-        <a href="#">Ver Más</a>
-    </div>
+    <div class="eventos-container">
+        <div class="evento">
+            <h3>Nombre del Evento 1</h3>
+            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 1">
+            <p>Fecha: 01 de enero, 2024</p>
+            <a href="#">Ver Más</a>
+        </div>
 
-    <!-- Agrega más eventos aquí (se pueden repetir estos bloques según sea necesario) -->
+        <div class="evento">
+            <h3>Nombre del Evento 2</h3>
+            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 2">
+            <p>Fecha: 03 de enero, 2024</p>
+            <a href="#">Ver Más</a>
+        </div>
+
+        <div class="evento">
+            <h3>Nombre del Evento 3</h3>
+            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 3">
+            <p>Fecha: 07 de enero, 2024</p>
+            <a href="#">Ver Más</a>
+        </div>
+
+        <div class="evento">
+            <h3>Nombre del Evento 4</h3>
+            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 4">
+            <p>Fecha: 07 de enero, 2024</p>
+            <a href="#">Ver Más</a>
+        </div>
+    </div>
 
     <button id="mostrar-mas">Mostrar Más</button>
 {% endblock %}

@@ -1,18 +1,49 @@
-/* Estilos específicos para destacados.html */
-#destacados {
-    margin: 20px;
-    text-align: center;
+/* Estilos para la página de Destacados */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #dfedeb; /* Fondo de toda la página (verde claro) */
 }
 
-#crear-evento {
+
+#destacados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra horizontalmente los elementos internos */
+    align-items: center; /* Centra verticalmente los elementos internos */
+    text-align: center;
+    padding: 20px;
+    background-color: #dfedeb; /* Fondo de la sección destacados */
+    height: 100vh; /* Ajusta la altura según tus necesidades (100vh significa 100% de la altura de la ventana) */
+}
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.eventos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     margin: 20px;
 }
 
 .evento {
+    width: calc(25% - 20px); /* Ancho de cada evento */
+    background-color: #ebd889; /* Color de fondo de los eventos (amarillo claro) */
     border: 1px solid #ccc;
     margin: 10px;
     padding: 10px;
     text-align: center;
+}
+
+.evento h3 {
+    font-size: 18px;
+    color: #06836c; /* Título del evento en color verde oscuro */
+    margin: 0;
 }
 
 .evento img {
@@ -20,20 +51,24 @@
     height: auto;
 }
 
-#mostrar-mas {
-    margin: 20px;
-    background-color: #f1a425;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+.evento p {
+    color: #f1a425; /* Color naranja claro para la fecha */
+    margin: 5px 0;
 }
 
-#mostrar-mas:hover {
-    background-color: #ee7a1f;
-    transform: scale(1.05);
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+.evento a {
+    color: #ee7a1f; /* Color naranja oscuro para los enlaces */
+    text-decoration: none;
 }
+
+#mostrar-mas {
+    background-color: #06836c; /* Fondo del botón (verde oscuro) */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px auto;
+    display: block;
+    cursor: pointer;
+}
+
+
