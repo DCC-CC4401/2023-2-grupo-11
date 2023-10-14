@@ -9,11 +9,11 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def initPerfil(request):
-    return render(request, "perfil_apagno_app/index.html")
+    return render(request, "index.html")
 
 def register_user(request):
     if request.method == 'GET': # When loading register page
-     return render(request, "perfil_apagno_app/register_user.html") # Show template
+     return render(request, "register_user.html") # Show template
 
     elif request.method == 'POST': # Getting form inputs
      # Take form elements coming as request.POST
@@ -33,7 +33,7 @@ def register_user(request):
 
 def login_user(request):
     if request.method == 'GET':
-        return render(request,"perfil_apagno_app/login.html")
+        return render(request,"login.html")
     if request.method == 'POST':
         username = request.POST['username']
         contraseña = request.POST['contraseña']
