@@ -41,10 +41,13 @@
 
             <!-- Encabezado de la página-->
             <div class="py-5 text-center">
+                <h1 class="display-2" style="color:#0e7e6d">Apaño!</h1>
                 <h1>Creación de evento</h1>
-                <p class="lead">Crea el evento que tengas en mente y compártelo con la comunidad.</p>
+                <p class="h4">Crea el evento que tengas en mente y compártelo con la comunidad.</p>
             </div>
+        
             <!-- Fin encabezado -->
+            <div class="adaptive-container">
                     <!-- Formulario de nueva tarea-->
                 <form action="" method="post">
                 {% csrf_token %} <!-- csrf token for basic security -->
@@ -76,7 +79,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="descripcion" class="form-label">Descripción</label>
-                        <textarea id="descripcion" class="form-control" placeholder="Describe el evento que planeas"rows="3" name="descripcion"></textarea>
+                        <textarea id="descripcion" class="form-control" placeholder="Describe el evento que planeas, en un máximo de 250 palabras"rows="3" name="descripcion"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="imagen" class="form-label">Imagen</label>
@@ -84,12 +87,18 @@
                     </div>
                     <!-- Fin formulario de nueva tarea -->
                     <!-- Botones para agregar o eliminar tarea -->
-                    <div class="row">
-                        <button class="btn btn-primary" name="eventAdd" type="submit"><i class="fa fa-plus icon"></i>Agregar evento</button>
-                        <button disabled class="btn btn-danger" name="eventDelete" formnovalidate="" type="submit" onclick="$('input#sublist').click();"><i class="fa fa-trash-o icon"></i>Eliminar evento</button>
+                    <div class="row justify-content-center">
+                        <div class="col-2">
+                            <button class="btn btn-outline-primary" name="eventAdd" type="submit"><i class="fa fa-plus icon"></i>Agregar evento</button>
+                        </div>
+                        <div class="col-2">
+                            <button disabled class="btn btn-outline-danger" name="eventDelete" formnovalidate="" type="submit" onclick="$('input#sublist').click();"><i class="fa fa-trash-o icon"></i>Eliminar evento</button>
+                        </div>
+                        </div>
                     </div>
                 
                 </form>
+            </div>
         </div><!-- container -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
