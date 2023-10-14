@@ -23,7 +23,7 @@ class nuevoEvento(models.Model):
     lugar = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=250, blank=True)
     categoria = models.ForeignKey(Categorias, default='Sin categoria', on_delete=models.CASCADE)#models.CharField(max_length=100, default='Sin categoria')
-    imagen = models.FileField(upload_to='eventos_images/', blank=True)
+    imagen = models.ImageField(upload_to='eventos_images/', blank=True)
     
     def __str__(self):
         return self.nombre
