@@ -2,11 +2,6 @@
 
 {% load static %}
 
-{% block title %}
-    <h2 style="text-align: center; display: flex; justify-content: center; align-items: center;">Destacados de la Semana</h2>
-{% endblock %}
-
-
 {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'style/destacados.css' %}">
 {% endblock %}
@@ -19,7 +14,9 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Destacados de la Semana</h2>
+    <div class="py-5 text-center">
+        <h2 style="font-size: 36px; color: #06836c; margin-bottom: 20px; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Destacados de la Semana</h2>
+    </div>
 
     <div class="eventos-container">
         <div class="evento">

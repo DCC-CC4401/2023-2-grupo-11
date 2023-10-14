@@ -5,16 +5,23 @@ body {
     background-color: #dfedeb; /* Fondo de toda la página (verde claro) */
 }
 
-
 #destacados {
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Centra horizontalmente los elementos internos */
-    align-items: center; /* Centra verticalmente los elementos internos */
-    text-align: center;
+    /* align-items: center; *//* Elimina esta propiedad */
+    /* text-align: center; *//* Esta propiedad no es necesaria aquí */
     padding: 20px;
     background-color: #dfedeb; /* Fondo de la sección destacados */
     height: 100vh; /* Ajusta la altura según tus necesidades (100vh significa 100% de la altura de la ventana) */
+}
+
+#destacados h2 {
+    font-size: 36px !important;
+    color: #06836c !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
 }
 
 #content {
