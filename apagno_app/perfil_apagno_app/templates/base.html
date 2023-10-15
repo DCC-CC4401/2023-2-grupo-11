@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="navbar">
-        <a id="logo" href="destacados.html">
+        <a id="logo" href="/eventos-destacados">
             <img src="{% static 'imag/logo_sin_fondo.png' %}" alt="Logo">
         </a>
         <div id="search">
@@ -18,8 +18,8 @@
             <button type="submit">Buscar</button>
         </div>
         <div class="login-buttons">
-            <a href="#">Ingresar</a>
-            <a href="#">Registrarse</a>
+            <a href="/perfil_apagno_app/login">Ingresar</a>
+            <a href="/perfil_apagno_app/register">Registrarse</a>
         </div>
     </div>
     {% block content %}{% endblock %}

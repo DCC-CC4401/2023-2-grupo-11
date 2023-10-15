@@ -20,6 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
+app_name = 'apagno_app'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('perfil_apagno_app/', include('perfil_apagno_app.urls')),
@@ -32,3 +34,6 @@ if settings.DEBUG:
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
