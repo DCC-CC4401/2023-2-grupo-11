@@ -18,8 +18,7 @@
         <h2 style="font-size: 36px; color: #06836c; margin-bottom: 20px; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Destacados de la Semana</h2>
     </div>
 
-    <div class="eventos-container">
-
+    <div id="eventos-container" class="eventos-container">
         {% for evento in eventos %}
             <div class="evento">
                 <h3>{{ evento.nombre }}</h3>
@@ -28,9 +27,50 @@
                 <a href="#">Ver Más</a>
             </div>
         {% endfor %}
-        
     </div>
 
-    <button id="mostrar-mas">Mostrar Más</button>
+    <button id="load-more-button">Ver Más</button>
+    <div id="load-more-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loadMoreButton = document.getElementById('load-more-button');
+            let currentPage = 2;
+            let loadingMoreEvents = false; // Controla si se están cargando más eventos.
+
+            loadMoreButton.addEventListener('click', function () {
+                if (loadingMoreEvents) {
+                    return; // No hagas nada si ya se están cargando eventos.
+                }
+
+                loadingMoreEvents = true; // Evita más clics mientras se carga.
+
+                fetch(`/eventos-destacados-logged/?page=${currentPage}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(data, 'text/html');
+                        const newEvent = doc.querySelector('.evento');
+                        const eventsContainer = document.getElementById('eventos-container');
+
+                        if (newEvent) {
+                            eventsContainer.appendChild(newEvent);
+                            currentPage++;
+                        } else {
+                            // Si no hay más eventos, oculta el botón "Ver Más".
+                            loadMoreButton.style.display = 'none';
+                            const noMoreEventsMessage = document.createElement('p');
+                            noMoreEventsMessage.textContent = 'No hay más eventos';
+                            document.getElementById('load-more-container').appendChild(noMoreEventsMessage);
+                        }
+
+                        loadingMoreEvents = false;
+                    });
+            });
+        });
+    </script>
+</div>
 {% endblock %}
+
+
 
