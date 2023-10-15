@@ -70,15 +70,19 @@ body {
     text-decoration: none;
 }
 
-#load-more-button {
-    background-color: #06836c;
-    color: white;
-    border: #ebd889;
-    padding: 10px 20px;
-    margin: 20px auto;
+/* custom.css */
+#mostrar-mas {
     display: block;
+    margin: 0 auto;
+    background-color: #008000; /* Cambia el color de fondo a verde */
+    color: #fff; /* Cambia el color del texto a blanco */
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
+
 
 
 
