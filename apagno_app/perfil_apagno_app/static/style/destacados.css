@@ -54,17 +54,19 @@ body {
 }
 
 .evento img {
-    max-width: 100%;
-    height: auto;
+    width: 7cm; /* Ancho fijo deseado */
+    height: 5cm; /* Alto fijo deseado */
+    object-fit: cover; /* Recortar la imagen para ajustarla al tamaño especificado */
 }
 
+
 .evento p {
-    color: #f1a425; /* Color naranja claro para la fecha */
+    color: #06836c; /* Color naranja claro para la fecha */
     margin: 5px 0;
 }
 
 .evento a {
-    color: #ee7a1f; /* Color naranja oscuro para los enlaces */
+    color: #06836c; /* Color naranja oscuro para los enlaces */
     text-decoration: none;
 }
 

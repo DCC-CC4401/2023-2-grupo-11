@@ -19,33 +19,15 @@
     </div>
 
     <div class="eventos-container">
-        <div class="evento">
-            <h3>Nombre del Evento 1</h3>
-            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 1">
-            <p>Fecha: 01 de enero, 2024</p>
-            <a href="#">Ver Más</a>
-        </div>
 
-        <div class="evento">
-            <h3>Nombre del Evento 2</h3>
-            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 2">
-            <p>Fecha: 03 de enero, 2024</p>
-            <a href="#">Ver Más</a>
-        </div>
-
-        <div class="evento">
-            <h3>Nombre del Evento 3</h3>
-            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 3">
-            <p>Fecha: 07 de enero, 2024</p>
-            <a href="#">Ver Más</a>
-        </div>
-
-        <div class="evento">
-            <h3>Nombre del Evento 4</h3>
-            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 4">
-            <p>Fecha: 07 de enero, 2024</p>
-            <a href="#">Ver Más</a>
-        </div>
+        {% for evento in eventos %}
+            <div class="evento">
+                <h3>{{ evento.nombre }}</h3>
+                <img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}">
+                <p>{{ evento.fecha }}</p>
+                <a href="#">Ver Más</a>
+            </div>
+        {% endfor %}
         
     </div>
 
