@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block navbar %}
-    <!-- Puedes incluir el botón "Crear Evento" solo si el usuario está autenticado -->
+    <!-- incluir el botón "Crear Evento" solo si el usuario está autenticado -->
     <div id="crear-evento">
         <a href="#">Crear Evento</a>
     </div>
@@ -36,14 +36,14 @@
         document.addEventListener('DOMContentLoaded', function () {
             const loadMoreButton = document.getElementById('load-more-button');
             let currentPage = 2;
-            let loadingMoreEvents = false; // Controla si se están cargando más eventos.
+            let loadingMoreEvents = false; //Controla si se están cargando más eventos.
 
             loadMoreButton.addEventListener('click', function () {
                 if (loadingMoreEvents) {
-                    return; // No hagas nada si ya se están cargando eventos.
+                    return; // No hace nada si ya se están cargando eventos.
                 }
 
-                loadingMoreEvents = true; // Evita más clics mientras se carga.
+                loadingMoreEvents = true; //Evita más clics mientras se carga.
 
                 fetch(`/eventos-destacados-logged/?page=${currentPage}`)
                     .then(response => response.text())
@@ -57,7 +57,7 @@
                             eventsContainer.appendChild(newEvent);
                             currentPage++;
                         } else {
-                            // Si no hay más eventos, oculta el botón "Ver Más".
+                            //Si no hay más eventos, oculta el botón "Ver Más".
                             loadMoreButton.style.display = 'none';
                             const noMoreEventsMessage = document.createElement('p');
                             noMoreEventsMessage.textContent = 'No hay más eventos';

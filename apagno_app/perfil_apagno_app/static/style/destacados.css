@@ -61,23 +61,28 @@ body {
 
 
 .evento p {
-    color: #06836c; /* Color naranja claro para la fecha */
+    color: #06836c;
     margin: 5px 0;
 }
 
 .evento a {
-    color: #06836c; /* Color naranja oscuro para los enlaces */
+    color: #06836c;
     text-decoration: none;
 }
 
-#mostrar-mas {
-    background-color: #06836c; /* Fondo del botón (verde oscuro) */
+#load-more-button {
+    background-color: #06836c;
     color: white;
-    border: none;
+    border: #ebd889;
     padding: 10px 20px;
     margin: 20px auto;
     display: block;
     cursor: pointer;
 }
+
+
+
+
+
 
 
