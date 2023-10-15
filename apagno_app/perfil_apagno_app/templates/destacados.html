@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/destacados.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    <!-- Puedes incluir el botón "Crear Evento" solo si el usuario está autenticado -->
+    <div id="crear-evento">
+        <a href="#">Crear Evento</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="py-5 text-center">
+        <h2 style="font-size: 36px; color: #06836c; margin-bottom: 20px; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Destacados de la Semana</h2>
+    </div>
+
+    <div class="eventos-container">
+        <div class="evento">
+            <h3>Nombre del Evento 1</h3>
+            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 1">
+            <p>Fecha: 01 de enero, 2024</p>
+            <a href="#">Ver Más</a>
+        </div>
+
+        <div class="evento">
+            <h3>Nombre del Evento 2</h3>
+            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 2">
+            <p>Fecha: 03 de enero, 2024</p>
+            <a href="#">Ver Más</a>
+        </div>
+
+        <div class="evento">
+            <h3>Nombre del Evento 3</h3>
+            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 3">
+            <p>Fecha: 07 de enero, 2024</p>
+            <a href="#">Ver Más</a>
+        </div>
+
+        <div class="evento">
+            <h3>Nombre del Evento 4</h3>
+            <img src="{% static 'imag/evento_ejemplo.jpg' %}" alt="Evento 4">
+            <p>Fecha: 07 de enero, 2024</p>
+            <a href="#">Ver Más</a>
+        </div>
+        
+    </div>
+
+    <button id="mostrar-mas">Mostrar Más</button>
+{% endblock %}
+

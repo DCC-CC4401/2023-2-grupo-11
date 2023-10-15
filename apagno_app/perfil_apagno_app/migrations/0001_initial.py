@@ -16,6 +16,17 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='nuevoEvento',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('nombre', models.CharField(max_length=100)),
+                ('host', models.CharField(max_length=100)),
+                ('fecha', models.DateField(default='05-10-2023')),
+                ('hora', models.TimeField(default='23:16')),
+                ('lugar', models.CharField(max_length=100)),
+                ('descripcion', models.CharField(blank=True, max_length=250)),
+                ('categoria', models.CharField(max_length=100)),
+            ],
             name='User',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),

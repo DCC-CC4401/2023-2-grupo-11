@@ -15,10 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from apagno_app.views import index
+from apagno_app.views import index, destacados_logged
+from django.conf import settings
+from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('testeo/', index),
+<<<<<<< HEAD
+    path('perfil_apagno_app/', include('perfil_apagno_app.urls')),
+    path('eventos-destacados-logged/', destacados_logged),
+    path('eventos-destacados/', destacados_logged), #esto hay que cambiarlo a cuando tengamos la destacados sin loggear
+=======
     path('perfil/', include('perfil_apagno_app.urls')),
+>>>>>>> usuarios_copy
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
