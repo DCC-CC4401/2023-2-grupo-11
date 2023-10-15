@@ -1,11 +1,8 @@
 from django import forms
 from django.utils import timezone
-from perfil_apagno_app.models import nuevoEvento, Categorias
+from perfil_apagno_app.models import nuevoEvento
 
-cats = Categorias.objects.all().values_list('nombre', 'nombre')
-cats_list = []
-for item in cats:
-    cats_list.append(item)
+
 
 class NuevoEventoForm(forms.ModelForm):
     class Meta:
@@ -19,7 +16,7 @@ class NuevoEventoForm(forms.ModelForm):
             'hora': forms.TimeInput(attrs={'class':'form-control', 'type':'time'}),
             'lugar': forms.TextInput(attrs={'class':'form-control'}),
             'descripcion': forms.TextInput(attrs={'class':'form-control'}),
-            'categoria': forms.Select(choices=cats_list,attrs={'class':'form-control'}),
+            'categoria': forms.TextInput(attrs={'class':'form-control'}),
             'imagen': forms.FileInput(attrs={'class':'form-control'}),
         }
     #categoria = forms.ModelChoiceField(queryset=Categoria.objects.all()

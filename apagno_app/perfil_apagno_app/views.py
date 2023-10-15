@@ -13,13 +13,13 @@ def initPerfil(request):
 
 def creacionEvento(request):
     mis_eventos = nuevoEvento.objects.all()
-    categorias = Categorias.objects.all()
+    #categorias = Categorias.objects.all()
     #context = {}
     #context['form'] = NuevoEventoForm()
 
     if request.method == "GET":
        #form = NuevoEventoForm()
-        return render(request, 'perfil_app/creacionEvento.html', {"eventos": mis_eventos, "categorias": categorias})
+        return render(request, 'perfil_app/creacionEvento.html', {"eventos": mis_eventos})
     
     if request.method == "POST":
         if "eventAdd" in request.POST:
@@ -27,7 +27,8 @@ def creacionEvento(request):
             host = request.POST.get('host','default value')
             lugar = request.POST['lugar']#.get('lugar',False)
             descripcion = request.POST['descripcion']#.get('descripcion',False)
-            categoria = Categorias.objects.get(nombre=request.POST["selector_categoria"])
+            #categoria = Categorias.objects.get(nombre=request.POST["selector_categoria"])
+            categoria = request.POST.get('categoria',False)
             imagen = request.FILES.get('imagen', None)
             nuevo_evento = nuevoEvento(nombre=nombre, host=host, lugar=lugar, descripcion=descripcion, categoria=categoria, imagen=imagen)
             nuevo_evento.save()

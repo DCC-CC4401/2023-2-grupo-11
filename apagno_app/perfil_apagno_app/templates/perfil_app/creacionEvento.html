@@ -56,15 +56,7 @@
                         <input type="text" id="nombre" class="form-control" placeholder="¿Qué planearás?" name='nombre' required/>
                     </div>
                     <!-- Falta categoría-->
-                    <div >
-                        <label for="categoria">Categoría</label>
-                        <select id="categoria"  class="form-control" name="selector_categoria"/>
-                        <option class="disabled" value="">Elige una categoría</option>
-                        {% for categoria in categorias %}
-                            <option class="" value="{{ categoria.nombre }}" name="{{ categoria.nombre }}">{{ categoria.nombre }}</option>
-                        {% endfor %}
-                        </select>
-                    </div>
+                    
                     <div class="mb-3">
                         <label for="fecha" class="form-label">Fecha</label>
                         <input type="date" id="fecha" class="form-control"  placeholder="¿Qué día se realizará el evento?" name="fecha" required/>
