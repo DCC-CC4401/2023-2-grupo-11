@@ -23,9 +23,13 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('testeo/', index),
+<<<<<<< HEAD
     path('perfil_apagno_app/', include('perfil_apagno_app.urls')),
     path('eventos-destacados-logged/', destacados_logged),
     path('eventos-destacados/', destacados_logged), #esto hay que cambiarlo a cuando tengamos la destacados sin loggear
+=======
+    path('perfil/', include('perfil_apagno_app.urls')),
+>>>>>>> usuarios_copy
 ]
 
 if settings.DEBUG:

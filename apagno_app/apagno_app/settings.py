@@ -133,3 +133,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Tells the app to use the User model defined in perfil_apagno_app/models.py
+AUTH_USER_MODEL = 'perfil_apagno_app.User'

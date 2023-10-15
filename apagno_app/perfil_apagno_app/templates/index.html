@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Base</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'style/base.css' %}">
+   </head>
+   <body>
+      <div id="navbar">
+         <a id="logo">
+               <img src="{% static 'imag/logo_sin_fondo.png' %}" alt="Logo"> <!--Aquí colocar el logo -->
+         </a>
+         <div id="search">
+            <input type="text" placeholder="Buscar eventos por palabra">
+            <button type="submit">Buscar</button>
+         </div>
+         <div class="login-buttons">
+            {% if user.is_authenticated %}
+               <a href="{% url 'logout' %}"> <button type="submit"> Cerrar sesión </button></a>
+            {% else %}
+               <a href="{% url 'register_user' %}"> <button type="submit"> Registrarse</button></a>
+               <a href="{% url 'login' %}"><button type="submit"> Iniciar Sesión</button></a>
+            {% endif %}
+         </div>
+      </div>
+   </body>
+</html>

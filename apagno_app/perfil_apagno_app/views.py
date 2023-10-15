@@ -1,13 +1,50 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from perfil_apagno_app.forms import NuevoEventoForm
-from perfil_apagno_app.models import *
-
+from django.http import HttpResponseRedirect
+from perfil_apagno_app.models import nuevoEvento, Categorias, User
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
 def initPerfil(request):
-    return HttpResponse("Pagina de Perfil de usuario")
+    return render(request, "index.html")
+
+def register_user(request):
+    if request.method == 'GET': # When loading register page
+     return render(request, "register_user.html") # Show template
+
+    elif request.method == 'POST': # Getting form inputs
+     # Take form elements coming as request.POST
+     nombre = request.POST['nombre']
+     contraseña = request.POST['contraseña']
+     apodo = request.POST['apodo']
+     pronombre = request.POST['pronombre']
+     mail = request.POST['mail']
+
+     # Creating new user
+     user = User.objects.create_user(username=nombre, password=contraseña, email=mail, nickname=apodo, pronouns=pronombre)
+
+     #Redireccionar la página /tareas
+     return HttpResponseRedirect('')
+
+
+
+def login_user(request):
+    if request.method == 'GET':
+        return render(request,"login.html")
+    if request.method == 'POST':
+        username = request.POST['username']
+        contraseña = request.POST['contraseña']
+        usuario = authenticate(username=username,password=contraseña)
+        if usuario is not None:
+            login(request,usuario)
+            return HttpResponseRedirect('testeo2')
+        else:
+            return HttpResponseRedirect('register')
+        
+ 
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect('testeo2')
 
 def creacionEvento(request):
     mis_eventos = nuevoEvento.objects.all()
