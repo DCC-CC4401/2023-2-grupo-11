@@ -29,9 +29,12 @@ def register_user(request):
      #Redireccionar la página /tareas
      return HttpResponseRedirect('')
 
+# request para la creacion del evento en la db
 def login_user(request):
+    # si el request es GET, se muestra el formulario
     if request.method == 'GET':
         return render(request,"login.html")
+    # si el request es POST, se crea el evento
     if request.method == 'POST':
         username = request.POST['username']
         contraseña = request.POST['contraseña']
@@ -46,13 +49,17 @@ def logout_user(request):
     logout(request)
     return HttpResponseRedirect('testeo2')
 
+# request para la creacion del evento en el html
 def creacionEvento(request):
+    # obtencion de los datos en la db
     mis_eventos = nuevoEvento.objects.all()
     categorias = Categorias.objects.all()
 
+    # si el request es GET, se muestra el formulario
     if request.method == "GET":
         return render(request, 'perfil_app/creacionEvento.html', {"eventos": mis_eventos, "categorias": categorias})
     
+    # si el request es POST, se crea el evento
     if request.method == "POST":
         if "eventAdd" in request.POST:
             nombre = request.POST['nombre']

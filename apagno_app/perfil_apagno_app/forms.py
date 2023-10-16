@@ -3,11 +3,13 @@ from django.utils import timezone
 from perfil_apagno_app.models import *
 
 # Si la pagina no quiere iniciar por Categoria, eliminar esto y actualizar pagina
+# Funcion util para invocar las categorias al momento de seleccionarlas en el formulario del evento
 cats = Categorias.objects.all().values_list('nombre', 'nombre')
 cats_list = []
 for item in cats:
     cats_list.append(item)
 
+# class NuevoEventoForm señala el formato del formulario para un evento nuevo
 class NuevoEventoForm(forms.ModelForm):
     class Meta:
         model = nuevoEvento

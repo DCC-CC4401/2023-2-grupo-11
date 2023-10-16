@@ -14,6 +14,8 @@ class User(AbstractUser):
     nickname = models.CharField(max_length=30)
     contact = models.CharField(max_length=100, blank=True)
 
+# Categorias crea una lista de categorias modificable desde el administrador de Django
+# las categorias corresponden a los tipos de eventos posibles (a acordar)
 class Categorias(models.Model):
     nombre = models.CharField(max_length=100)
 
@@ -21,6 +23,7 @@ class Categorias(models.Model):
         return self.nombre
 
 # nuevoEvento genera un evento nuevo con los siguientes atributos: nombre, host, fecha, hora, lugar, descripcion, categoria, imagen
+# devuelve el evento en un formato apto para la base de datos
 class nuevoEvento(models.Model):
     nombre = models.CharField(max_length=100)
     host = models.ForeignKey(User, on_delete=models.CASCADE)
