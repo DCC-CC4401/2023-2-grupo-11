@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'style/destacados.css' %}">
 {% endblock %}
 
@@ -14,8 +15,9 @@
 {% endblock %}
 
 {% block content %}
+<div class="container"></div>
     <div class="py-5 text-center">
-        <h2 style="font-size: 36px; color: #06836c; margin-bottom: 20px; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Destacados de la Semana</h2>
+        <h2 style="font-size: 36px; color: #0e7e6d; margin-bottom: 20px; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Destacados de la Semana</h2>
     </div>
 
     <div id="eventos-container" class="eventos-container">
@@ -70,6 +72,9 @@
         });
     </script> -->
     <button id="mostrar-mas">Mostrar Más</button>
+    <div class="crear-evento">
+        <a href="/perfil_apagno_app/crear_evento"> <button type="submit"> Crear evento</button></a>
+    </div>
 </div>
 {% endblock %}
 
