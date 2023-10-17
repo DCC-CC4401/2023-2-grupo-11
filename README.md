@@ -22,4 +22,4 @@ Se iniciará la aplicacion en la dirección *http://localhost:8000/*, la cual de
 - *http://localhost:8000/perfil_apagno_app/register* Formulario de registro en la aplicación.
 - *http://localhost:8000/perfil_apagno_app/login* Formulario de inicio de sesión.
 
-Las páginas de registro y login redirigen momentaneamente a una página en blanco, la cual se tiene proyectado a futuro que será la página del perfil de usuario. De momento la página principal funciona de nexo a las demás.
+Las páginas de registro y login redirigen momentaneamente a la pagina de creación de evento, ya que se tiene proyectado a futuro que la redirección se hará a la página del perfil de usuario. De momento la página principal funciona de nexo a las demás.
