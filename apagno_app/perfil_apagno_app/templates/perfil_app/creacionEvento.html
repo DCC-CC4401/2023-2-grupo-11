@@ -33,9 +33,12 @@
                 <button type="submit">Buscar</button>
             </div>
             <div class="login-buttons">
-                <a href="/perfil_apagno_app/login">Ingresar</a>
-                <a href="/perfil_apagno_app/register">Registrarse</a>
-            </div>
+                {% if user.is_authenticated %}
+                   <a href="{% url 'logout' %}"> <button type="submit"> Cerrar sesión </button></a>
+                {% else %}
+                   <a href="{% url 'register_user' %}"> <button type="submit"> Registrarse</button></a>
+                {% endif %}
+             </div>
         </div>
         <!-- El contenido de tu página va aquí -->
         <div class="container" style="margin-top: 2em">
