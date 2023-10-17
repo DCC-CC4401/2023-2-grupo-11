@@ -64,10 +64,12 @@ def creacionEvento(request):
         if "eventAdd" in request.POST:
             nombre = request.POST['nombre']
             host = User.objects.get(username=request.user.username)
+            fecha = request.POST['fecha']
+            hora = request.POST['hora']
             lugar = request.POST['lugar']
             descripcion = request.POST['descripcion']
             categoria = Categorias.objects.get(nombre=request.POST["selector_categoria"])
             imagen = request.FILES.get('imagen', None)
-            nuevo_evento = nuevoEvento(nombre=nombre, host=host, lugar=lugar, descripcion=descripcion, categoria=categoria, imagen=imagen)
+            nuevo_evento = nuevoEvento(nombre=nombre, host=host, fecha=fecha, hora=hora, lugar=lugar, descripcion=descripcion, categoria=categoria, imagen=imagen)
             nuevo_evento.save()
             return redirect('/eventos_destacados')
