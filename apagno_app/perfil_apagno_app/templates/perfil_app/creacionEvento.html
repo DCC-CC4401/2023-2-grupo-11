@@ -106,8 +106,19 @@
             </div>
         </div><!-- container -->
         {% else %}
-            <a href="{% url 'register_user' %}"> <button type="submit"> Registrarse</button></a>
-            <a href="{% url 'login' %}"><button type="submit"> Iniciar Sesión</button></a>
+        <div class="container" style="margin-top: 2em">
+            <div class="py-5 text-center">
+                <h1 class="display-2" style="color:#0e7e6d">Apaño!</h1>
+                <h1>Creación de evento</h1>
+                <p class="h4">Para poder crear tu evento, primero debes acceder a tu cuenta!</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="login-buttons">
+                    <a href="{% url 'register_user' %}"> <button type="submit"> Registrarse</button></a>
+                    <a href="{% url 'login' %}"><button type="submit"> Iniciar Sesión</button></a>
+                </div>
+            </div>
+        </div>
         {% endif %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -83,6 +83,18 @@ body {
     border-radius: 5px;
 }
 
+#crear-evento {
+    display: block;
+    margin: 0 auto;
+    background-color: #008000; /* Cambia el color de fondo a verde */
+    color: #fff; /* Cambia el color del texto a blanco */
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 
 
 
