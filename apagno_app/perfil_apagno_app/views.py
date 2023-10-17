@@ -27,7 +27,7 @@ def register_user(request):
      user = User.objects.create_user(username=nombre, password=contraseña, email=mail, nickname=apodo, pronouns=pronombre)
 
      #Redireccionar la página /tareas
-     return HttpResponseRedirect('')
+     return HttpResponseRedirect('login') # '')
 
 # request para la creacion del evento en la db
 def login_user(request):
@@ -41,13 +41,13 @@ def login_user(request):
         usuario = authenticate(username=username,password=contraseña)
         if usuario is not None:
             login(request,usuario)
-            return HttpResponseRedirect('testeo2')
+            return HttpResponseRedirect('crear_evento') #'testeo2')
         else:
             return HttpResponseRedirect('register')
         
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect('testeo2')
+    return HttpResponseRedirect('crear_evento') #testeo2')
 
 # request para la creacion del evento en el html
 def creacionEvento(request):
