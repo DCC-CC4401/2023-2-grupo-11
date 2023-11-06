@@ -34,9 +34,11 @@
             </div>
             <div class="login-buttons">
                 {% if user.is_authenticated %}
-                   <a href="{% url 'logout' %}"> <button type="submit"> Cerrar sesión </button></a>
+                    <a href="{% url 'perfil' %}"> <button type="submit"> Perfil </button></a>
+                    <a href="{% url 'logout' %}"> <button type="submit"> Cerrar sesión </button></a>
                 {% else %}
-                   <a href="{% url 'register_user' %}"> <button type="submit"> Registrarse</button></a>
+                    <a href="{% url 'login' %}"><button type="submit"> Iniciar Sesión</button></a>
+                    <a href="{% url 'register_user' %}"> <button type="submit"> Registrarse</button></a>
                 {% endif %}
              </div>
         </div>
@@ -48,7 +50,9 @@
             <div class="py-5 text-center">
                 <h1 class="display-2" style="color:#0e7e6d">Apaño!</h1>
                 <h1>Creación de evento</h1>
-                <p class="h4">Crea el evento que tengas en mente y compártelo con la comunidad.</p>
+                <p class="h4">
+                    Crea el evento que tengas en mente y compártelo con la comunidad.
+                </p>
             </div>
         
             <!-- Fin encabezado -->
@@ -101,7 +105,6 @@
                         </div>
                         </div>
                     </div>
-                
                 </form>
             </div>
         </div><!-- container -->

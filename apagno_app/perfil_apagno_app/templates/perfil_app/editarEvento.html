@@ -1,0 +1,88 @@
+{%extends 'base.html'%}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/destacados.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
+{% endblock %}
+
+{%block content%}
+
+<div class="container" style="margin-top: 2em">
+    <div class="py-5 text-center">
+        <h1>Edición de evento</h1>
+        <p class="h4">
+            Haz los cambios que desees en tu evento.
+        </p>
+    </div>
+
+    <div class="adaptive-container">
+        <form action="" method="post">
+            {% csrf_token %}
+             <!-- Campo Nombre -->
+            <div class="form-group">
+                <label for="{{ form.nombre.id_for_label }}">{{ form.nombre.label }}</label>
+                <input type="text" id="{{ form.nombre.id_for_label }}" name="{{ form.nombre.name }}" class="form-control" value="{{ form.nombre.value }}">
+            </div>
+            
+            <!-- Campo Categoría -->
+            <div class="form-group">
+                <label for="{{ form.categoria.id_for_label }}">{{ form.categoria.label }}</label>
+                <select id="{{ form.categoria.id_for_label }}" name="{{ form.categoria.name }}" class="form-control">
+                    {% for option in form.categoria.field.choices %}
+                        <option value="{{ option.0 }}" {% if option.0 == form.categoria.value %} selected {% endif %}>
+                            {{ option.1 }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Campo Fecha -->
+            <div class="form-group">
+                <label for="{{ form.fecha.id_for_label }}">{{ form.fecha.label }}</label>
+                <input type="date" id="{{ form.fecha.id_for_label }}" name="{{ form.fecha.name }}" class="form-control" value="{{ form.fecha.value|date:'Y-m-d' }}">
+            </div>
+
+            <!-- Campo Hora -->
+            <div class="form-group">
+                <label for="{{ form.hora.id_for_label }}">{{ form.hora.label }}</label>
+                <input type="time" id="{{ form.hora.id_for_label }}" name="{{ form.hora.name }}" class="form-control" value="{{ form.hora.value|time:'H:i' }}">
+            </div>
+
+            <!-- Campo Lugar -->
+            <div class="form-group">
+                <label for="{{ form.lugar.id_for_label }}">{{ form.lugar.label }}</label>
+                <input type="text" id="{{ form.lugar.id_for_label }}" name="{{ form.lugar.name }}" class="form-control" value="{{ form.lugar.value }}">
+            </div>
+
+            <!-- Campo Descripción -->
+            <div class="form-group">
+                <label for="{{ form.descripcion.id_for_label }}">{{ form.descripcion.label }}</label>
+                <textarea id="{{ form.descripcion.id_for_label }}" name="{{ form.descripcion.name }}" class="form-control">{{ form.descripcion.value }}</textarea>
+            </div>
+
+            <!-- Campo Imagen -->
+            <div class="form-group">
+                <label for="{{ form.imagen.id_for_label }}">{{ form.imagen.label }}</label>
+                <input type="file" id="{{ form.imagen.id_for_label }}" name="{{ form.imagen.name }}" class="form-control-file">
+                {% if form.imagen.value %}
+                    <br>
+                    <label>Imagen Actual:</label>
+                    <img src="{{ form.imagen.value.url }}" alt="Imagen actual" style="max-width: 200px; max-height: 200px;">
+                {% endif %}
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-2">
+                    <button style="height: 40px; width: 150px;" class="btn btn-outline-primary" type="submit"><i class="fa fa-plus icon"></i>Realizar cambios</button>
+                </div>
+                <div class="col-2">
+                    <a style="height: 40px; width: 150px;" href="{% url 'perfil' %}" class="btn btn-outline-danger">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{%endblock content%}
