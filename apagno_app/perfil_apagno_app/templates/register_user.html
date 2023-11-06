@@ -44,7 +44,7 @@
       <form method="post">
         {% csrf_token %}
         <div class="form-group">
-            <label for="nombre_usuario">Nombre</label>
+            <label for="nombre_usuario">Username</label>
             <input type="text" class="form-control" id=nombre_usuario name="nombre" required>
         </div>
 
@@ -53,10 +53,20 @@
             <input type="password" class="form-control" id="contraseña" name="contraseña" required>
         </div>
 
-            <div class="form-group">
+        <div class="form-group">
+            <label for="nombrereal">Nombre</label>
+            <input type="text" class="form-control" id="nombrereal" name="nombrereal" required>
+        </div>
+
+        <div class="form-group">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+        </div>
+
+        <div class="form-group">
             <label for="apodo">Apodo</label>
-            <input type="text" class="form-control" id="apodo" name="apodo" required>
-            </div>
+            <input type="text" class="form-control" id="apodo" name="apodo">
+        </div>
 
         <div>
             <label for="pronombre">Pronombre</label>
