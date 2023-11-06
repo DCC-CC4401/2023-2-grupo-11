@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block extra_css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'style/destacados.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
 {% endblock %}
@@ -17,7 +18,7 @@
 {% block content %}
 <div class="container"></div>
     <div class="py-5 text-center">
-        <h2 style="font-size: 36px; color: #0e7e6d; margin-bottom: 20px; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Destacados de la Semana</h2>
+        <h2 class="display" style="font-size: 36px; color: #0e7e6d; margin-bottom: 20px; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Destacados de la Semana</h2>
     </div>
     <div class="crear-evento">
         <a href="/perfil_apagno_app/crear_evento"> <button id='mostrar-mas' type="submit"> Crear evento</button></a>
