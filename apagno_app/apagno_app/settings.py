@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'perfil_apagno_app',
+    'perfil_apagno_app'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +135,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'perfil_apagno_app/media')
 # Tells the app to use the User model defined in perfil_apagno_app/models.py
 AUTH_USER_MODEL = 'perfil_apagno_app.User'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PORT = 25
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'desarrolloyotros@gmail.com'
+EMAIL_HOST_PASSWORD = 'fhzx qtsz ybsv ntjr'

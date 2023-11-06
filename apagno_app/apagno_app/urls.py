@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('perfil_apagno_app/', include('perfil_apagno_app.urls')),
     path('eventos_destacados_logged/', destacados_logged),
-    path('eventos_destacados/', destacados_logged), #esto hay que cambiarlo a cuando tengamos la destacados sin loggear
+    path('eventos_destacados/', destacados_logged, name='eventos_destacados'), #esto hay que cambiarlo a cuando tengamos la destacados sin loggear
 ]
 
 if settings.DEBUG:
