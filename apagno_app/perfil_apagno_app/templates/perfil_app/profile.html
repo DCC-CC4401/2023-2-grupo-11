@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/destacados.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/perfil.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="eventos-container">
+	<form method="POST" enctype="multipart/form-data" class="adaptive-container text-center">
+		{% csrf_token %} 
+		
+	    {% if user.profile %}
+			<img src="{{user.profile.avatar.url}}" alt="{{ user.username }}" accept=".jpg,.jpeg,.png"/>
+	    {% endif %}
+	    
+	    <h2 class="text-center">{{ user.username | title }}</h2>
+	    <p class="text-center"><a href="mailto:{{user.email}}">{{user.email}}</a></p>
+		<hr>
+		
+		<label for="email" class="form-label">Email Address:</label>
+		<input type="email" id="email" class="form-control" name="email" value="{{user.email}}" required/>
+			
+		
+		<label for="avatar" class="form-label">Avatar:</label>
+		<input type="file" class="form-control" name="avatar" id="avatar">	
+		
+    <div class="column text-center" style="margin-top: 15px;">
+      <div class="col-2">
+        <a href="{%url 'perfil'%}"><button style="height: 40px; width: 150px;" type="submit" class="btn btn-primary">Actualizar perfil</button></a>
+      </div>
+      <div class="col-2">
+        <a href="{%url 'perfil'%}" style="height: 40px; width: 150px;" class="btn btn-outline-danger">Cancelar</a>
+      </div>
+    </div>
+	
+	</form>
+</div>
+{% endblock %}
