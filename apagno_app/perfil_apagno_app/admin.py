@@ -6,3 +6,4 @@ from .models import *
 admin.site.register(User)
 admin.site.register(nuevoEvento)
 admin.site.register(Categorias)
+admin.site.register(Profile)

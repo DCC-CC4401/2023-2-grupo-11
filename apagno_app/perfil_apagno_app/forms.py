@@ -25,3 +25,14 @@ class NuevoEventoForm(forms.ModelForm):
             'categoria': forms.Select(choices=cats_list,attrs={'class':'form-control'}),
             'imagen': forms.FileInput(attrs={'class':'form-control'}),
         }
+
+# for profile update
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email']
+        
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['avatar'] 
