@@ -1,0 +1,96 @@
+{%extends 'base.html'%}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/destacados.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'style/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style/cajon.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style/perfil.css' %}">
+{% endblock %}
+
+{%block content%}
+
+<div class="perfil">
+    <div class="foto-perfil">
+      <img src="{{user.profile.avatar.url}}" class="avatar"  accept=".jpg,.jpeg,.png"/>
+    </div>
+    <div class="datos-usuario">
+      <h1>{{user.first_name}} {{user.last_name}}</h1>
+      <h2>{{user.username}}</h2>
+      <p>Email: {{user.email}}</p>
+    </div>
+    <a href="{%url 'profile'%}"><button class="boton-editar">Editar Perfil</button></a>
+  </div>
+
+<div class="py-5 text-center">
+	<h2>Mis eventos</h2>
+	{% if eventos %}
+	<style>
+        .bloque {
+            float: left;
+            width: 50%;
+			text-align: left;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 4px solid rgb(255, 255, 255);
+			background-color: #fcefbe; /* Color de fondo de los eventos (amarillo claro) */
+        }
+    </style>
+	<div class="bloque">
+		<h2 style="margin-left: 20px; margin-top: 10px;">Eventos a asistir</h2>
+		<div id="eventos-container" class="eventos-container">
+			{% if eventos %}
+			{% for evento in eventos %}
+				<div class="cajon">
+					<img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}" style="max-width: 100%;">
+					<div class="cajon-content">
+						<span class="cajon-title">{{ evento.nombre }}</span>
+						<span class="cajon-date">{{ evento.fecha }}, a las {{ evento.hora }}</span>
+						<p class="cajon-description">Lugar: {{ evento.lugar }}</p>
+					</div>
+					<div class="cajon-buttons-event">
+						<a href="{%url 'evento' evento.id %}"> <button class="cajon-button-event edit">Ver</button></a>
+						<a href="{%url 'eliminar_evento' evento.id %}"> <button class="cajon-button-event delete">Abandonar</button></a>
+					</div>
+				</div>
+			{% endfor %}
+			{% else %}
+				<p> Usted no tiene eventos a los que asistir</p>
+			{% endif %}
+		</div>
+	</div>
+	<div class="bloque">
+		<div style="display: flex; justify-content: space-between; align-items: center;">
+			<h2 style="margin-left: 20px; margin-top: 10px;">Eventos creados</h2>
+			<a href="/perfil_apagno_app/crear_evento"> <button class="cajon-but-creacionevento" type="submit"> Crear evento</button></a>
+		</div>
+		<div id="eventos-container" class="eventos-container">
+			{% if eventos %}
+			{% for evento in eventos %}
+				<div class="cajon">
+					<img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}" style="max-width: 100%;">
+					<div class="cajon-content">
+						<span class="cajon-title">{{ evento.nombre }}</span>
+						<span class="cajon-date">{{ evento.fecha }}, a las {{ evento.hora }}</span>
+						<p class="cajon-description">Lugar: {{ evento.lugar }}</p>
+					</div>
+					<div class="cajon-buttons-event">
+						<a href="{%url 'editar_evento' evento.id %}"> <button class="cajon-button-event edit">Editar</button></a>
+						<a href="{%url 'eliminar_evento' evento.id %}"> <button class="cajon-button-event delete">Eliminar</button></a>
+					</div>
+				</div>
+			{% endfor %}
+			{% else %}
+				<p> Usted no tiene eventos creados</p>
+			{% endif %}
+		</div>
+	</div>
+	{% else %}
+		<p> Usted no tiene eventos para mostrar</p>
+	{% endif %}
+	</ul>
+</div>
+{%endblock content%}

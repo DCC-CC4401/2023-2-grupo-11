@@ -1,0 +1,152 @@
+/* Estilos generales para el cajón */
+.cajon {
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    background-color: #ebd889; /* Color de fondo de los eventos (amarillo claro) */
+    padding: 10px;
+    margin: 10px 5px;
+    width: 48%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la imagen del cajón */
+.cajon img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+/* Estilos para el contenido del cajón */
+.cajon-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el contenido desde la izquierda */
+    flex-grow: 1; /* Permite que el contenido crezca y ocupe el espacio restante */
+}
+
+.cajon-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #06836c; /* Título del evento en color verde oscuro */
+    margin-bottom: 5px;
+}
+
+.cajon-date {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.cajon-description {
+    font-size: 14px;
+}
+
+/* Estilos para los botones del cajón */
+.cajon-buttons-event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto; /* Alinea los botones a la extrema derecha */
+}
+
+.cajon-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto; /* Alinea los botones a la extrema derecha */
+}
+
+.cajon-button {
+    width: 80px; /* Anchura fija para los botones */
+    height: 80px; /* Altura fija para los botones */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; /* Centra el texto verticalmente */
+}
+
+.cajon-button-event {
+    width: 80px; /* Anchura fija para los botones */
+    height: 80px; /* Altura fija para los botones */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; /* Centra el texto verticalmente */
+}
+
+.cajon-button-event:hover {
+    background-color: #0056b3;
+}
+
+.cajon-button-event.delete {
+    height: 35px; /* Altura fija para los botones */
+    background-color: #dc3545;
+    transition: background-color 0.3s;
+}
+
+.cajon-button-event.delete:hover {
+    background-color: #c82333;
+}
+
+.cajon-but-creacionevento {
+    margin-top: 10px;             /* Espacio desde la parte superior */
+    margin-right: 20px;           /* Espacio desde la parte derecha */
+    background-color: #008000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 1000; 
+}
+
+/* Media Query para pantallas con un ancho máximo de 768px (típico punto de quiebre para tablets y móviles) */
+@media (max-width: 1440px) {
+    .cajon {
+        flex-direction: column; /* Cambia la dirección a columna */
+        align-items: center;    /* Centra los elementos horizontalmente */
+    }
+
+    .cajon img {
+        margin-bottom: 15px;   /* Añade margen debajo de la imagen */
+        margin-right: 0;       /* Remueve el margen derecho de la imagen */
+    }
+
+    .cajon-content {
+        text-align: center;    /* Centra el texto */
+        align-items: center;   /* Centra los elementos horizontalmente */
+    }
+
+    .cajon-buttons-event {
+        margin-top: 15px;      /* Añade margen arriba de los botones */
+        flex-direction: column;   /* Cambia la dirección a fila */
+        gap: 1px;             /* Añade espacio entre los botones */
+        width: 100%;           /* Permite que los botones ocupen todo el ancho */
+    }
+    
+    .cajon-button-event {
+        width: 90px; /* Anchura fija para los botones */
+        height: 80px; /* Altura fija para los botones */
+    }
+
+    .cajon-button-event.delete {
+        height: 35px; /* Altura fija para los botones */
+    }
+}
+
