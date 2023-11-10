@@ -1,3 +1,10 @@
+<!-- Enlaces a Bootstrap CSS y JS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 {% extends "base.html" %}
 
 {% load static %}
@@ -16,61 +23,138 @@
 {% block content %}
     <div class="py-5 text-center">
         <h2 style="font-size: 36px; color: #06836c; margin-bottom: 20px; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Destacados de la Semana</h2>
-    </div>
 
+
+        <!-- Formulario de filtro aquí -->
+        <div class="form-group">
+            <form method="GET" action="{% url 'destacados_logged' %}">
+                    <label for="tipo">Tipo de Evento:</label>
+                    <select name="tipo" id="tipo" class="select-input">
+                        <option value="">Todos los tipos</option>
+                        <option value="concierto">Concierto</option>
+                        <option value="exposicion">Exposición</option>
+                        <option value="deporte">Deporte</option>
+                    </select>
+            
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" name="fecha" id="fecha" class="date-input">
+            
+                    <label for="hora">Hora:</label>
+                    <select name="hora" id="hora" class="select-input">
+                        <option value="">Cualquier hora</option>
+                        <option value="6-14">6h a 14h</option>
+                        <option value="14-20">14h a 20h</option>
+                        <option value="20-6">20h a 6h</option>
+                    </select>
+            
+                    <label for="estado">Estado:</label>
+                    <select name="estado" id="estado" class="select-input">
+                        <option value="">Todos</option>
+                        <option value="terminado">Evento Terminado</option>
+                        <option value="sin_comenzar">Evento Sin Comenzar</option>
+                    </select>
+            
+                <button type="submit" class="submit-button">Aplicar Filtro</button>
+            </form>
+        </div>
+
+        <!-- Formulario para ordenar -->
+        <div class="form-group">
+            <form method="GET" id="orden_form" action="{% url 'destacados_logged' %}">
+                <label for="orden">Ordenar por:</label>
+                <select name="orden" id="orden" class="select-input">
+                    <option value="fecha_asc">Fecha ascendente</option>
+                    <option value="fecha_desc">Fecha descendente</option>
+                </select>
+                <button type="submit" class="submit-button">Aplicar orden</button>  <!-- Este botón está oculto para el envío automático -->
+            </form>
+        </div>
+
+        <!-- Este botón está oculto para el envío automático 
+        <script>
+            function submitForm() {
+                document.getElementById('orden_form').submit();
+            }
+        </script>
+        -->
+
+
+
+    <!-- Renderiza los eventos -->
     <div id="eventos-container" class="eventos-container">
         {% for evento in eventos %}
             <div class="evento">
                 <h3>{{ evento.nombre }}</h3>
-                <img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}">
+                <img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}" data-toggle="modal" data-target="#eventoModal" 
+                data-nombre="{{ evento.nombre }}" data-fecha="{{ evento.fecha }}" data-hora="{{ evento.hora }}" data-descripcion="{{ evento.descripcion }}"
+                data-host="{{ evento.host }}" data-lugar="{{ evento.lugar }}" data-categoria="{{ evento.categoria }}">
                 <p>{{ evento.fecha }}</p>
-                <a href="#">Ver Más</a>
             </div>
         {% endfor %}
     </div>
 
-    <!--<button id="load-more-button">Ver Más</button>
-    <div id="load-more-container"></div> 
+<!-- Modal de eventos-->
+<div class="modal fade" id="eventoModal" tabindex="-1" role="dialog" aria-labelledby="eventoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="eventoModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Mostrar los detalles del evento -->
+                <p id="eventoFechaHora">
+                    📅⏰ <!-- Emoji de reloj -->
+                </p>
+                <p id="eventoLugar">
+                    📍 <!-- Emoji de chincheta -->
+                </p>
+                <p id="eventoHost">
+                    &#128100; <!-- Emoji de ususario -->
+                </p>
+                <p><strong>Descripción:</strong></p>
+                <p id="eventoDescripcion"></p>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const loadMoreButton = document.getElementById('load-more-button');
-            let currentPage = 2;
-            let loadingMoreEvents = false; //Controla si se están cargando más eventos.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Apaño</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-            loadMoreButton.addEventListener('click', function () {
-                if (loadingMoreEvents) {
-                    return; // No hace nada si ya se están cargando eventos.
-                }
+<script>
+    // Capturar el evento al hacer clic en la imagen
+    $('#eventos-container .evento img').click(function () {
+        // Obtener los datos del evento desde los atributos de datos personalizados
+        var nombre = $(this).data('nombre');
+        var fecha = $(this).data('fecha');
+        var hora = $(this).data('hora');
+        var host = $(this).data('host');
+        var lugar = $(this).data('lugar');
+        var descripcion = $(this).data('descripcion');
+        var categoria = $(this).data('categoria');
+        // Concatenar la fecha y la hora
+        var fechaHora = fecha + ' - ' + hora;
 
-                loadingMoreEvents = true; //Evita más clics mientras se carga.
+        // Actualizar el contenido del modal con los datos del evento
+        $('#eventoModalLabel').text(nombre);
+        $('#eventoNombre').text(nombre);
+        $('#eventoFechaHora').text(fechaHora);
+        $('#eventoHost').text(host);
+        $('#eventoLugar').text(lugar);
+        $('#eventoDescripcion').text(descripcion);
+        $('#eventoCategoria').text(categoria);
+    });
+</script>
 
-                fetch(`/eventos-destacados-logged/?page=${currentPage}`)
-                    .then(response => response.text())
-                    .then(data => {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(data, 'text/html');
-                        const newEvent = doc.querySelector('.evento');
-                        const eventsContainer = document.getElementById('eventos-container');
 
-                        if (newEvent) {
-                            eventsContainer.appendChild(newEvent);
-                            currentPage++;
-                        } else {
-                            //Si no hay más eventos, oculta el botón "Ver Más".
-                            loadMoreButton.style.display = 'none';
-                            const noMoreEventsMessage = document.createElement('p');
-                            noMoreEventsMessage.textContent = 'No hay más eventos';
-                            document.getElementById('load-more-container').appendChild(noMoreEventsMessage);
-                        }
-
-                        loadingMoreEvents = false;
-                    });
-            });
-        });
-    </script> -->
+    </div>
     <button id="mostrar-mas">Mostrar Más</button>
 </div>
+
 {% endblock %}
 
 

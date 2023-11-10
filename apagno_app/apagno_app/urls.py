@@ -20,12 +20,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
-app_name = 'apagno_app'
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('perfil_apagno_app/', include('perfil_apagno_app.urls')),
-    path('eventos-destacados-logged/', destacados_logged),
+    path('eventos-destacados-logged/', destacados_logged, name='destacados_logged'),
     path('eventos-destacados/', destacados_logged), #esto hay que cambiarlo a cuando tengamos la destacados sin loggear
 ]
 

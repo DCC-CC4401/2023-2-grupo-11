@@ -83,6 +83,70 @@ body {
     border-radius: 5px;
 }
 
+.form-group {
+    margin-right: 3cm; /* Agrega un margen derecho */
+}
+
+.select-input {
+    width: 200px; /* Ancho deseado para los campos select */
+    padding: 5px;
+    border: 1px solid #ebd889;
+    border-radius: 4px;
+}
+
+.date-input {
+    width: 200px; /* Ancho deseado para el campo de fecha */
+    padding: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+}
+
+.submit-button {
+    background-color: #06836c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* CSS para el Modal */
+.modal-content {
+    background-color: #ffffff; /* Color de fondo del modal (amarillo claro) */
+}
+
+.modal-title {
+    font-size: 24px;
+    color: #06836c; /* Color del título del modal (verde oscuro) */
+}
+
+.modal-body p {
+    font-size: 16px;
+    color: #06836c; /* Color del texto en el cuerpo del modal (verde oscuro) */
+}
+
+.modal-footer .btn {
+    background-color: #05a533; /* Color del botón en el pie del modal (verde oscuro) */
+    color: #fff; /* Color del texto del botón en el pie del modal (blanco) */
+    border: none;
+    border-radius: 4px;
+}
+
+/* Añadir emojis a los elementos del modal */
+#eventoFechaHora::before {
+    content: "⏰ "; /* Emoji de reloj */
+    content: "📅 "; /* Emoji de calendario */
+}
+
+#eventoLugar::before {
+    content: "📍 "; /* Emoji de chincheta */
+}
+
+#eventoHost::before {
+    content: "👤 "; /* Emoji de usuario */
+}
+
+
 
 
 

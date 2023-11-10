@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'perfil_apagno_app',
+    'apagno_app'
 ]
 
 MIDDLEWARE = [
