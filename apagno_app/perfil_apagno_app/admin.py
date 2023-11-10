@@ -1,8 +1,8 @@
 from django.contrib import admin
 #from perfil_apagno_app
-from .models import nuevoEvento, User
+from .models import *
 
-admin.site.register(User)
 # Register your models here.
+admin.site.register(User)
 admin.site.register(nuevoEvento)
-#admin.site.register(Categorias)
+admin.site.register(Categorias)

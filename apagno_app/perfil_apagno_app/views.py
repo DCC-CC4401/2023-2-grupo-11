@@ -11,29 +11,6 @@ from django.contrib.auth import authenticate, login, logout
 def initPerfil(request):
     return HttpResponse("Pagina de Perfil de usuario")
 
-def creacionEvento(request):
-    mis_eventos = nuevoEvento.objects.all()
-    #categorias = Categorias.objects.all()
-    #context = {}
-    #context['form'] = NuevoEventoForm()
-
-    if request.method == "GET":
-       #form = NuevoEventoForm()
-        return render(request, 'perfil_app/creacionEvento.html', {"eventos": mis_eventos})
-    
-    if request.method == "POST":
-        if "eventAdd" in request.POST:
-            nombre = request.POST['nombre']#.get('nombre',False)
-            host = request.POST.get('host','default value')
-            lugar = request.POST['lugar']#.get('lugar',False)
-            descripcion = request.POST['descripcion']#.get('descripcion',False)
-            #categoria = Categorias.objects.get(nombre=request.POST["selector_categoria"])
-            categoria = request.POST.get('categoria',False)
-            imagen = request.FILES.get('imagen', None)
-            nuevo_evento = nuevoEvento(nombre=nombre, host=host, lugar=lugar, descripcion=descripcion, categoria=categoria, imagen=imagen)
-            nuevo_evento.save()
-            return redirect('/perfil_apagno_app/crear_evento')
-
 def register_user(request):
     if request.method == 'GET': # When loading register page
      return render(request, "register_user.html") # Show template
@@ -52,8 +29,6 @@ def register_user(request):
      #Redireccionar la página /tareas
      return HttpResponseRedirect('')
 
-
-
 def login_user(request):
     if request.method == 'GET':
         return render(request,"login.html")
@@ -67,7 +42,25 @@ def login_user(request):
         else:
             return HttpResponseRedirect('register')
         
- 
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect('testeo2')
+
+def creacionEvento(request):
+    mis_eventos = nuevoEvento.objects.all()
+    categorias = Categorias.objects.all()
+
+    if request.method == "GET":
+        return render(request, 'perfil_app/creacionEvento.html', {"eventos": mis_eventos, "categorias": categorias})
+    
+    if request.method == "POST":
+        if "eventAdd" in request.POST:
+            nombre = request.POST['nombre']
+            host = User.objects.get(username=request.user.username)
+            lugar = request.POST['lugar']
+            descripcion = request.POST['descripcion']
+            categoria = Categorias.objects.get(nombre=request.POST["selector_categoria"])
+            imagen = request.FILES.get('imagen', None)
+            nuevo_evento = nuevoEvento(nombre=nombre, host=host, lugar=lugar, descripcion=descripcion, categoria=categoria, imagen=imagen)
+            nuevo_evento.save()
+            return redirect('/eventos_destacados')
