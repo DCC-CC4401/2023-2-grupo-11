@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'perfil_apagno_app'
+    'perfil_apagno_app',
+    'apagno_app',
 ]
 
 MIDDLEWARE = [
