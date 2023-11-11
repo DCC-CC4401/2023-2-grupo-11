@@ -1,12 +1,12 @@
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
-from perfil_apagno_app.models import nuevoEvento
+from perfil_apagno_app.models import nuevoEvento, Categorias
 from datetime import datetime, time
 
 
 def destacados_logged(request):
     # Obtener los parámetros de filtro de la solicitud GET
-    categoria_filtro = request.GET.get('categoria', '')
+    categoria_filtro = request.GET.get('tipo', '')
     fecha_filtro = request.GET.get('fecha', '')
     hora_filtro = request.GET.get('hora', '')
     estado_filtro = request.GET.get('estado', '')
@@ -16,9 +16,12 @@ def destacados_logged(request):
     # Obtener todos los eventos desde la base de datos
     eventos = nuevoEvento.objects.all()
 
+    # Obtener todas las categorías
+    categorias = Categorias.objects.all()
+
     # Aplicar los filtros si se han especificado
     if categoria_filtro:
-        eventos = eventos.filter(tipo=categoria_filtro)
+        eventos = eventos.filter(categoria__nombre=categoria_filtro)
     if fecha_filtro:
         eventos = eventos.filter(fecha=fecha_filtro)
     if hora_filtro:

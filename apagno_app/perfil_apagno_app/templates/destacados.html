@@ -15,12 +15,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
 {% endblock %}
 
-{% block navbar %}
     <!-- incluir el botón "Crear Evento" solo si el usuario está autenticado -->
     <div id="crear-evento">
         <a href="#">Crear Evento</a>
     </div>
-{% endblock %}
 
 {% block content %}
 <div class="container"></div>
@@ -36,9 +34,10 @@
                     <label for="tipo">Tipo de Evento:</label>
                     <select name="tipo" id="tipo" class="select-input">
                         <option value="">Todos los tipos</option>
-                        <option value="concierto">Concierto</option>
-                        <option value="exposicion">Exposición</option>
-                        <option value="deporte">Deporte</option>
+                        <option value="Concierto">Concierto</option>
+                        <option value="Viaje">Viaje</option>
+                        <option value="Evento a beneficio">Evento a beneficio</option>
+                        <option value="Junta">Junta</option>
                     </select>
             
                     <label for="fecha">Fecha:</label>
