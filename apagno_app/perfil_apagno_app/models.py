@@ -14,7 +14,7 @@ class User(AbstractUser):
     pronouns = models.CharField(max_length=5,choices=pronounsChoices)
     nickname = models.CharField(max_length=30)
     contact = models.CharField(max_length=100, blank=True)
-
+    
 # Categorias crea una lista de categorias modificable desde el administrador de Django
 # las categorias corresponden a los tipos de eventos posibles (a acordar)
 class Categorias(models.Model):
@@ -72,3 +72,7 @@ class Profile(models.Model):
             img.thumbnail(output_size)
             # overwrite the larger image
             img.save(self.avatar.path)
+
+class EventosUsuario(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    eventos_asistir = models.ManyToManyField(nuevoEvento, blank=True)
