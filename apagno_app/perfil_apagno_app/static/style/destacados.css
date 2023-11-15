@@ -97,20 +97,20 @@ body {
 }
 
 .form-group {
-    margin-right: 3cm; /* Agrega un margen derecho */
+    margin-left: 3cm; /* Agrega un margen derecho */
 }
 
 .select-input {
     width: 200px; /* Ancho deseado para los campos select */
     padding: 5px;
-    border: 1px solid #ebd889;
+    border: 1px solid #06836c;
     border-radius: 4px;
 }
 
 .date-input {
     width: 200px; /* Ancho deseado para el campo de fecha */
     padding: 5px;
-    border: 1px solid #ffffff;
+    border: 1px solid #06836c;
     border-radius: 4px;
 }
 
