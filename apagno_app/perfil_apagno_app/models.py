@@ -15,7 +15,6 @@ class User(AbstractUser):
     nickname = models.CharField(max_length=30)
     contact = models.CharField(max_length=100, blank=True)
     
-
 # Categorias crea una lista de categorias modificable desde el administrador de Django
 # las categorias corresponden a los tipos de eventos posibles (a acordar)
 class Categorias(models.Model):
