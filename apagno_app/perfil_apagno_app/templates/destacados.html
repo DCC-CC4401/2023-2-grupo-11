@@ -88,6 +88,7 @@
             <div class="evento">
                 <h3>{{ evento.nombre }}</h3>
                 <img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}" data-toggle="modal" data-target="#eventoModal" 
+                data-id="{{ evento.id }}"
                 data-nombre="{{ evento.nombre }}" data-fecha="{{ evento.fecha }}" data-hora="{{ evento.hora }}" data-descripcion="{{ evento.descripcion }}"
                 data-host="{{ evento.host }}" data-lugar="{{ evento.lugar }}" data-categoria="{{ evento.categoria }}">
                 <p>{{ evento.fecha }}</p>
@@ -114,23 +115,29 @@
                     📍 <!-- Emoji de chincheta -->
                 </p>
                 <p id="eventoHost">
-                    &#128100; <!-- Emoji de ususario -->
+                    &#128100; <!-- Emoji de usuario -->
                 </p>
                 <p><strong>Descripción:</strong></p>
                 <p id="eventoDescripcion"></p>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Apaño</button>
+                <form method="post" name="apaño_form"> 
+                    {% csrf_token %}
+                    <input type="hidden" id="eventoId">
+                    <button type="submit" class="btn btn-success" data-dismiss="modal">Apaño</button>
+                </form>
+                
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // Capturar el evento al hacer clic en la imagen
+    // Capturar el evento al hacer click en la imagen
     $('#eventos-container .evento img').click(function () {
         // Obtener los datos del evento desde los atributos de datos personalizados
+        var id = $(this).data('id');
         var nombre = $(this).data('nombre');
         var fecha = $(this).data('fecha');
         var hora = $(this).data('hora');
@@ -149,6 +156,9 @@
         $('#eventoLugar').text(lugar);
         $('#eventoDescripcion').text(descripcion);
         $('#eventoCategoria').text(categoria);
+
+        //Agrega id del evento al formulario
+        $('#eventoId').val(id);
     });
 </script>
 

@@ -14,6 +14,7 @@ class User(AbstractUser):
     pronouns = models.CharField(max_length=5,choices=pronounsChoices)
     nickname = models.CharField(max_length=30)
     contact = models.CharField(max_length=100, blank=True)
+    
 
 # Categorias crea una lista de categorias modificable desde el administrador de Django
 # las categorias corresponden a los tipos de eventos posibles (a acordar)
@@ -34,6 +35,7 @@ class nuevoEvento(models.Model):
     descripcion = models.CharField(max_length=250, blank=True)
     categoria = models.ForeignKey(Categorias, default='Sin categoria', on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to='eventos_images/', blank=True)
+    asistentes = models.ManyToManyField(User, related_name='eventos_asistir', blank=True)
     
     def __str__(self):
         return self.nombre

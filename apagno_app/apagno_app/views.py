@@ -1,7 +1,8 @@
 from django.http import HttpResponse, HttpResponseBadRequest
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from perfil_apagno_app.models import nuevoEvento
 from datetime import datetime, time
+from perfil_apagno_app.models import nuevoEvento
 
 
 def destacados_logged(request):
@@ -48,6 +49,15 @@ def destacados_logged(request):
             eventos = eventos.order_by('-fecha')
         else:
             eventos = eventos.order_by('-fecha')
+
+    if request.method == "POST" and request.is_ajax():
+        # Verificar si se ha enviado el formulario de "Apaño"
+        if 'apaño_form' in request.POST:
+            evento_id = request.POST.get("evento_id")
+            evento = get_object_or_404(nuevoEvento, id=evento_id)
+            request.user.eventos_asistir.add(evento)
+
+
     
     return render(request, "destacados.html", {'eventos': eventos})
 
