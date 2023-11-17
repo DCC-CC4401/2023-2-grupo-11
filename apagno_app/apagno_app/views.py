@@ -6,6 +6,7 @@ from perfil_apagno_app.models import nuevoEvento
 
 
 def destacados_logged(request):
+    print("alo")
     # Obtener los parámetros de filtro de la solicitud GET
     categoria_filtro = request.GET.get('categoria', '')
     fecha_filtro = request.GET.get('fecha', '')
@@ -50,12 +51,16 @@ def destacados_logged(request):
         else:
             eventos = eventos.order_by('-fecha')
 
-    if request.method == "POST" and request.is_ajax():
+    if request.method == "POST": 
         # Verificar si se ha enviado el formulario de "Apaño"
-        if 'apaño_form' in request.POST:
-            evento_id = request.POST.get("evento_id")
+        print("holi")
+        if 'apano_form' in request.POST:
+            print("holi2")
+            evento_id = request.POST.get("eventoId")
             evento = get_object_or_404(nuevoEvento, id=evento_id)
-            request.user.eventos_asistir.add(evento)
+            print(evento_id)
+            evento.asistentes.add(request.user)+
+    
 
 
     

@@ -92,6 +92,11 @@
                 data-nombre="{{ evento.nombre }}" data-fecha="{{ evento.fecha }}" data-hora="{{ evento.hora }}" data-descripcion="{{ evento.descripcion }}"
                 data-host="{{ evento.host }}" data-lugar="{{ evento.lugar }}" data-categoria="{{ evento.categoria }}">
                 <p>{{ evento.fecha }}</p>
+                <form method="post" name="apano_form"> 
+                    {% csrf_token %}
+                    <input type="hidden" id="eventoId">
+                    <button type="submit">Apaño</button>
+                </form>
             </div>
         {% endfor %}
     </div>
@@ -122,11 +127,11 @@
 
             </div>
             <div class="modal-footer">
-                <form method="post" name="apaño_form"> 
+                <!-- <form method="post" name="apaño_form"> 
                     {% csrf_token %}
                     <input type="hidden" id="eventoId">
                     <button type="submit" class="btn btn-success" data-dismiss="modal">Apaño</button>
-                </form>
+                </form> -->
                 
             </div>
         </div>
@@ -136,6 +141,7 @@
 <script>
     // Capturar el evento al hacer click en la imagen
     $('#eventos-container .evento img').click(function () {
+        console
         // Obtener los datos del evento desde los atributos de datos personalizados
         var id = $(this).data('id');
         var nombre = $(this).data('nombre');

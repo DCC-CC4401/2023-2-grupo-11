@@ -42,8 +42,8 @@
 	<div class="bloque">
 		<h2 style="margin-left: 20px; margin-top: 10px;">Eventos a asistir</h2>
 		<div id="eventos-container" class="eventos-container">
-			{% if eventos %}
-			{% for evento in eventos %}
+			{% if eventos_asistir %}
+			{% for evento in eventos_asistir %}
 				<div class="cajon">
 					<img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}" style="max-width: 100%;">
 					<div class="cajon-content">
