@@ -53,16 +53,15 @@ def destacados_logged(request):
 
     if request.method == "POST": 
         # Verificar si se ha enviado el formulario de "Apaño"
-        print("holi")
-        if 'apano_form' in request.POST:
-            print("holi2")
-            evento_id = request.POST.get("eventoId")
+        print("Llega el POST")
+        if "apano_form" in request.POST:
+            print("Detecta formulario")
+            evento_id = request.POST['eventoId']
+            print("Detecta id del evento: ",evento_id)
             evento = get_object_or_404(nuevoEvento, id=evento_id)
-            print(evento_id)
-            evento.asistentes.add(request.user)+
+            print(evento.asistentes.all())
+            evento.asistentes.add(request.user)
     
-
-
     
     return render(request, "destacados.html", {'eventos': eventos})
 

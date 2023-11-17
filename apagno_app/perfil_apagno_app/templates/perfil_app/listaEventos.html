@@ -27,7 +27,8 @@
 
 <div class="py-5 text-center">
 	<h2>Mis eventos</h2>
-	{% if eventos %}
+	{% if eventos_host or eventos_asistir %}
+
 	<style>
         .bloque {
             float: left;
@@ -68,8 +69,8 @@
 			<a href="/perfil_apagno_app/crear_evento"> <button class="cajon-but-creacionevento" type="submit"> Crear evento</button></a>
 		</div>
 		<div id="eventos-container" class="eventos-container">
-			{% if eventos %}
-			{% for evento in eventos %}
+			{% if eventos_host %}
+			{% for evento in eventos_host %}
 				<div class="cajon">
 					<img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}" style="max-width: 100%;">
 					<div class="cajon-content">

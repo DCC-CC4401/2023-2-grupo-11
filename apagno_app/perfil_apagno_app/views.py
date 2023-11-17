@@ -107,13 +107,23 @@ class Eventos(ListView):
     template_name = 'perfil_app/listaEventos.html'
     context_object_name = 'eventos'
 
-    #def get_queryset(self):
-    #    return nuevoEvento.objects.filter(host=self.request.user)
+    def get_queryset(self):
+        # Obtener todos los eventos donde el usuario es el host
+        eventos_host = nuevoEvento.objects.filter(host=self.request.user)
+
+        # Obtener todos los eventos donde el usuario es un asistente
+        eventos_asistir = nuevoEvento.objects.filter(asistentes=self.request.user)
+
+        return eventos_host, eventos_asistir
+
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['eventos'] = context['eventos'].filter(host=self.request.user)
-        context['eventos_asistir'] = context['eventos'].filter(host=self.request.user)
+        eventos_host, eventos_asistir = self.get_queryset()
+
+        context['eventos_host'] = eventos_host
+        context['eventos_asistir'] = eventos_asistir
+
         return context
 
 class EventoDetail(DetailView):

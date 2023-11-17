@@ -92,10 +92,10 @@
                 data-nombre="{{ evento.nombre }}" data-fecha="{{ evento.fecha }}" data-hora="{{ evento.hora }}" data-descripcion="{{ evento.descripcion }}"
                 data-host="{{ evento.host }}" data-lugar="{{ evento.lugar }}" data-categoria="{{ evento.categoria }}">
                 <p>{{ evento.fecha }}</p>
-                <form method="post" name="apano_form"> 
+                <form method="post"> 
                     {% csrf_token %}
-                    <input type="hidden" id="eventoId">
-                    <button type="submit">Apaño</button>
+                    <input type="hidden" id="eventoId" name ="eventoId" value="{{ evento.id }}">
+                    <button type="submit" name="apano_form">Apaño</button>
                 </form>
             </div>
         {% endfor %}
