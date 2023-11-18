@@ -95,24 +95,24 @@
     </div>
 
     <!-- Paginación -->
-    <div class="pagination">
+    <div class="pagination" style="display: flex; justify-content: center; margin-top: 20px;">
         <span class="step-links">
             {% if eventos.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ eventos.previous_page_number }}">previous</a>
+                <a href="?page=1" style="color: #06836c; padding: 10px; text-decoration: none; border: 1px solid #06836c; border-radius: 4px; margin: 0 5px;">&laquo; Primero</a>
+                <a href="?page={{ eventos.previous_page_number }}" style="color: #06836c; padding: 10px; text-decoration: none; border: 1px solid #06836c; border-radius: 4px; margin: 0 5px;">Anterior</a>
             {% endif %}
 
-            <span class="current">
+            <span class="current" style="color: #fff; background-color: #06836c; padding: 10px; border: 1px solid #06836c; border-radius: 4px; margin: 0 5px;">
                 Página {{ eventos.number }} de {{ eventos.paginator.num_pages }}.
             </span>
 
             {% if eventos.has_next %}
-                <a href="?page={{ eventos.next_page_number }}">next</a>
-                <a href="?page={{ eventos.paginator.num_pages }}">last &raquo;</a>
+                <a href="?page={{ eventos.next_page_number }}" style="color: #06836c; padding: 10px; text-decoration: none; border: 1px solid #06836c; border-radius: 4px; margin: 0 5px;">Siguiente</a>
+                <a href="?page={{ eventos.paginator.num_pages }}" style="color: #06836c; padding: 10px; text-decoration: none; border: 1px solid #06836c; border-radius: 4px; margin: 0 5px;">Último &raquo;</a>
             {% endif %}
         </span>
-    </div>
-<!-- Modal de eventos-->
+</div>
+e eventos-->
 <div class="modal fade" id="eventoModal" tabindex="-1" role="dialog" aria-labelledby="eventoModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

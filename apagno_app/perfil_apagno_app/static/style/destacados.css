@@ -159,6 +159,36 @@ body {
     content: "👤 "; /* Emoji de usuario */
 }
 
+/* Estilos para la Paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.step-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.step-links a {
+    color: #06836c;
+    padding: 10px;
+    text-decoration: none;
+    border: 1px solid #06836c;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.step-links .current {
+    color: #fff;
+    background-color: #06836c;
+    padding: 10px;
+    border: 1px solid #06836c;
+    border-radius: 4px;
+    margin: 0 5px;
+}
 
 
 
