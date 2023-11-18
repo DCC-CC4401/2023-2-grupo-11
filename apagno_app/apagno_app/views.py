@@ -11,14 +11,14 @@ def destacados_logged(request):
     hora_filtro = request.GET.get('hora', '')
     estado_filtro = request.GET.get('estado', '')
 
-    ahora = datetime.now() # Se define la fecha y horas actuales
+    ahora = datetime.now()  # Se define la fecha y horas actuales
 
     # Obtener todos los eventos desde la base de datos
     eventos_originales = nuevoEvento.objects.all()
 
     # Aplicar los filtros si se han especificado
     if categoria_filtro:
-        eventos = eventos.filter(tipo=categoria_filtro)
+        eventos_originales = eventos_originales.filter(categoria__nombre=categoria_filtro)
     if fecha_filtro:
         eventos_originales = eventos_originales.filter(fecha=fecha_filtro)
     if hora_filtro:
@@ -36,22 +36,11 @@ def destacados_logged(request):
         eventos_originales = eventos_originales.filter(fecha__gt=ahora.date())
         eventos_originales = eventos_originales.exclude(fecha=ahora.date(), hora__lte=ahora.time())
 
-    # Realizar la paginación de eventos
-    paginator = Paginator(eventos_originales, 4)  # 10 eventos por página
-    page = request.GET.get('page', 1)
-
-    try:
-        eventos = paginator.page(page)
-    except PageNotAnInteger:
-        eventos = paginator.page(1)
-    except EmptyPage:
-        eventos = paginator.page(paginator.num_pages)
-
+    # Realizar la ordenación de eventos
     if request.method == "GET":
         # Obtener el valor del campo de orden
         orden = request.GET.get('orden')
 
-        # Realiza el procesamiento necesario para ordenar los eventos según la opción seleccionada
         # Aplicar la ordenación
         if orden == 'fecha_asc':
             eventos_originales = eventos_originales.order_by('fecha')
@@ -60,6 +49,20 @@ def destacados_logged(request):
         else:
             eventos_originales = eventos_originales.order_by('-fecha')
 
-    return render(request, "destacados.html", {'eventos': eventos})
+    # Realizar la paginación de eventos
+    paginator = Paginator(eventos_originales, 4)  # 10 eventos por página
+    page = request.GET.get('page', 1)
+
+    try:
+        eventos_paginados = paginator.page(page)
+    except PageNotAnInteger:
+        eventos_paginados = paginator.page(1)
+    except EmptyPage:
+        eventos_paginados = paginator.page(paginator.num_pages)
+
+    return render(request, "destacados.html", {'eventos': eventos_paginados})
+
+
+
 
 
