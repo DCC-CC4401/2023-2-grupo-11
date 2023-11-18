@@ -95,6 +95,24 @@
         {% endfor %}
     </div>
 
+    <!-- Paginación -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if eventos.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ eventos.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Página {{ eventos.number }} de {{ eventos.paginator.num_pages }}.
+            </span>
+
+            {% if eventos.has_next %}
+                <a href="?page={{ eventos.next_page_number }}">next</a>
+                <a href="?page={{ eventos.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 <!-- Modal de eventos-->
 <div class="modal fade" id="eventoModal" tabindex="-1" role="dialog" aria-labelledby="eventoModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -150,12 +168,8 @@
         $('#eventoDescripcion').text(descripcion);
         $('#eventoCategoria').text(categoria);
     });
+    
 </script>
-
-
-    </div>
-    <button id="mostrar-mas">Mostrar Más</button>
-</div>
 
 {% endblock %}
 
