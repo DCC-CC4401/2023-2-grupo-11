@@ -36,15 +36,16 @@
         Crear evento
         </button>
     </div>-->
+    
     <div class="crear-evento">
-        <button id='mostrar-mas' type="submit"data-toggle="modal" data-target="#creacionModal" > Crear evento</button>
+        <button id='mostrar-mas' type="button" data-toggle="modal" data-target="#creacionModal" > Crear evento</button>
     </div>
     <!-- Modal creación de evento-->
-    <div class="modal fade" id="creacionModal" tabindex="-1" role="dialog" aria-labelledby="eventoModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="creacionModal" data-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Creación de evento </h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Creación de evento </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -56,8 +57,7 @@
 
                         <!-- Encabezado de la página-->
                         <div class="py-5 text-center">
-                            <h1 class="display-2" style="color:#0e7e6d">Apaño!</h1>
-                            <h1>Creación de evento</h1>
+                            <h1 class="display-4" style="color:#0e7e6d">Apaño!</h1>
                             <p class="h4">
                                 Crea el evento que tengas en mente y compártelo con la comunidad.
                             </p>
@@ -99,8 +99,10 @@
                                     <textarea id="descripcion" class="form-control" placeholder="Describe el evento que planeas, en un máximo de 250 palabras"rows="3" name="descripcion"></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="imagen" class="form-label">Imagen</label>
+                                    <label for="imagen" class="form-label">
+                                        Agrega una imagen
                                     <input type="file" id="imagen" name="imagen" class="form-control" accept="image/png, image/jpeg"/>
+                                    </label>
                                 </div>
                                 <!-- Fin formulario de nueva tarea -->
                                 <!-- Botones para agregar o eliminar tarea -->
@@ -130,9 +132,6 @@
                     {% endif %}
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Apaño</button>
                 </div>
             </div>
         </div>
