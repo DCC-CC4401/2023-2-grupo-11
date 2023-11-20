@@ -27,9 +27,9 @@
     <div class="py-5 text-center">
         <h2 class="display" style="font-size: 36px; color: #0e7e6d; margin-bottom: 20px; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Destacados de la Semana</h2>
     </div>
-    <div class="crear-evento">
+    <!-- <div class="crear-evento">
         <a href="/perfil_apagno_app/crear_evento"> <button id='mostrar-mas' type="submit"> Crear evento</button></a>
-    </div>
+    </div>-->
     <!-- Button trigger modal -->
     <!--<div class="crear-evento">
         <button id='mostrar-mas' type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -105,12 +105,9 @@
                                 <!-- Fin formulario de nueva tarea -->
                                 <!-- Botones para agregar o eliminar tarea -->
                                 <div class="row justify-content-center">
-                                    <div class="col-2">
+                                    <div class="d-grid gap-2 d-md-block">
                                         <button class="btn btn-outline-primary" name="eventAdd" type="submit"><i class="fa fa-plus icon"></i>Agregar evento</button>
-                                    </div>
-                                    <div class="col-2">
                                         <button disabled class="btn btn-outline-danger" name="eventDelete" formnovalidate="" type="submit" onclick="$('input#sublist').click();"><i class="fa fa-trash-o icon"></i>Eliminar evento</button>
-                                    </div>
                                     </div>
                                 </div>
                             </form>
