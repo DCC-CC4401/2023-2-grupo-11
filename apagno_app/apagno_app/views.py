@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import render
-from perfil_apagno_app.models import nuevoEvento
+from perfil_apagno_app.models import nuevoEvento, Categorias
 from datetime import datetime, time
 
 
@@ -15,6 +15,7 @@ def destacados_logged(request):
 
     # Obtener todos los eventos desde la base de datos
     eventos = nuevoEvento.objects.all()
+    categorias = Categorias.objects.all()
 
     # Aplicar los filtros si se han especificado
     if categoria_filtro:
@@ -49,6 +50,6 @@ def destacados_logged(request):
         else:
             eventos = eventos.order_by('-fecha')
     
-    return render(request, "destacados.html", {'eventos': eventos})
+    return render(request, "destacados.html", {'eventos': eventos,'categorias': categorias})
 
 
