@@ -1,10 +1,27 @@
 from django.http import HttpResponse, HttpResponseBadRequest
-from django.shortcuts import render
-from perfil_apagno_app.models import nuevoEvento, Categorias
+from django.shortcuts import render, redirect
+from perfil_apagno_app.models import nuevoEvento, Categorias, User
 from datetime import datetime, time
 
 
 def destacados_logged(request):
+    # Obtener todos los eventos desde la base de datos
+    eventos = nuevoEvento.objects.all()
+    categorias = Categorias.objects.all()
+    # si el request es POST, se crea el evento
+    if request.method == "POST":
+        if "eventAdd" in request.POST:
+            nombre = request.POST['nombre']
+            host = User.objects.get(username=request.user.username)
+            fecha = request.POST['fecha']
+            hora = request.POST['hora']
+            lugar = request.POST['lugar']
+            descripcion = request.POST['descripcion']
+            categoria = Categorias.objects.get(nombre=request.POST["selector_categoria"])
+            imagen = request.FILES.get('imagen', None)
+            nuevo_evento = nuevoEvento(nombre=nombre, host=host, fecha=fecha, hora=hora, lugar=lugar, descripcion=descripcion, categoria=categoria, imagen=imagen)
+            nuevo_evento.save()
+            return redirect('/eventos_destacados')
     # Obtener los parámetros de filtro de la solicitud GET
     categoria_filtro = request.GET.get('categoria', '')
     fecha_filtro = request.GET.get('fecha', '')
@@ -13,9 +30,7 @@ def destacados_logged(request):
 
     ahora = datetime.now() # Se define la fecha y horas actuales
 
-    # Obtener todos los eventos desde la base de datos
-    eventos = nuevoEvento.objects.all()
-    categorias = Categorias.objects.all()
+   
 
     # Aplicar los filtros si se han especificado
     if categoria_filtro:
