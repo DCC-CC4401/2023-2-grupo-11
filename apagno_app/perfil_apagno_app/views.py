@@ -153,7 +153,7 @@ class Eventos(ListView):
         context['eventos_host'] = eventos_host
         context['eventos_asistir'] = eventos_asistir
 
-        context['eventos'] = context['eventos'].filter(host=self.request.user)
+        #context['eventos'] = context['eventos'].filter(host=self.request.user)
         context['categorias'] = Categorias.objects.all()
         return context
     
