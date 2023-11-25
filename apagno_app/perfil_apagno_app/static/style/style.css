@@ -11,3 +11,16 @@ border-radius: 5px;
 max-width: 1000px;
 margin: 0 auto;
 }
+
+
+.custom-file-input {
+    display: inline-block;
+    cursor: pointer;
+}
+  
+.custom-file-label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+  
