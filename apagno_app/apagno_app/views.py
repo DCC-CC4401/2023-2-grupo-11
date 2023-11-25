@@ -66,26 +66,7 @@ def destacados_logged(request):
             eventos_originales = eventos_originales.order_by('fecha')
         elif orden == 'fecha_desc':
             eventos_originales = eventos_originales.order_by('-fecha')
-        #----------------------------------------------------------------------------------------------------
         else:
-        #        eventos = eventos.order_by('-fecha')
-
-    #if request.method == "POST": 
-    #    # Verificar si se ha enviado el formulario de "Apaño"
-    #    print("Llega el POST")
-    #    if "apano_form" in request.POST:
-    #        print("Detecta formulario")
-    #        evento_id = request.POST['eventoId']
-    #        print("Detecta id del evento: ",evento_id)
-    #        evento = get_object_or_404(nuevoEvento, id=evento_id)
-    #        print(evento.asistentes.all())
-    #        evento.asistentes.add(request.user)
-    #        return HttpResponseRedirect(reverse('eventos_destacados'))
-    
-    
-    #return render(request, "destacados.html", {'eventos': eventos,'categorias': categorias})
-
-    #----------------------------------------------------------------------------------------
             eventos_originales = eventos_originales.order_by('-fecha')
 
     if request.method == "POST": 
@@ -112,5 +93,3 @@ def destacados_logged(request):
         eventos_paginados = paginator.page(paginator.num_pages)
 
     return render(request, "destacados.html", {'eventos': eventos_paginados,'categorias': categorias})
-
-#-----------------------------------------------------------------------------------------
