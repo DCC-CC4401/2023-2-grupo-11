@@ -133,7 +133,7 @@ class EventoDetail(DetailView):
 
     def get_queryset(self):
         base_qs = super(EventoDetail, self).get_queryset()
-        return base_qs.filter(host=self.request.user)
+        return base_qs.filter(asistentes=self.request.user)
 
 class EventoUpdate(UpdateView):
     model = nuevoEvento
