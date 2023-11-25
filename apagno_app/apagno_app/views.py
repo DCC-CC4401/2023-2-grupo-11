@@ -1,13 +1,29 @@
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
-from perfil_apagno_app.models import nuevoEvento
+from perfil_apagno_app.models import nuevoEvento, Categorias, User
 from datetime import datetime, time
 from perfil_apagno_app.models import nuevoEvento
 
 
 def destacados_logged(request):
-    print("alo")
+    # Obtener todos los eventos desde la base de datos
+    eventos = nuevoEvento.objects.all()
+    categorias = Categorias.objects.all()
+    # si el request es POST, se crea el evento
+    if request.method == "POST":
+        if "eventAdd" in request.POST:
+            nombre = request.POST['nombre']
+            host = User.objects.get(username=request.user.username)
+            fecha = request.POST['fecha']
+            hora = request.POST['hora']
+            lugar = request.POST['lugar']
+            descripcion = request.POST['descripcion']
+            categoria = Categorias.objects.get(nombre=request.POST["selector_categoria"])
+            imagen = request.FILES.get('imagen', None)
+            nuevo_evento = nuevoEvento(nombre=nombre, host=host, fecha=fecha, hora=hora, lugar=lugar, descripcion=descripcion, categoria=categoria, imagen=imagen)
+            nuevo_evento.save()
+            return redirect('/eventos_destacados')
     # Obtener los parámetros de filtro de la solicitud GET
     categoria_filtro = request.GET.get('categoria', '')
     fecha_filtro = request.GET.get('fecha', '')
@@ -16,8 +32,7 @@ def destacados_logged(request):
 
     ahora = datetime.now() # Se define la fecha y horas actuales
 
-    # Obtener todos los eventos desde la base de datos
-    eventos = nuevoEvento.objects.all()
+   
 
     # Aplicar los filtros si se han especificado
     if categoria_filtro:
@@ -65,6 +80,6 @@ def destacados_logged(request):
             return HttpResponseRedirect(reverse('eventos_destacados'))
     
     
-    return render(request, "destacados.html", {'eventos': eventos})
+    return render(request, "destacados.html", {'eventos': eventos,'categorias': categorias})
 
 
