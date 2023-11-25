@@ -85,34 +85,7 @@ def creacionEvento(request):
             nuevo_evento = nuevoEvento(nombre=nombre, host=host, fecha=fecha, hora=hora, lugar=lugar, descripcion=descripcion, categoria=categoria, imagen=imagen)
             nuevo_evento.save()
             return redirect('/eventos_destacados')
-        
 
-def creacionEvento2(request):
-    # obtencion de los datos en la db
-    mis_eventos = nuevoEvento.objects.all()
-    categorias = Categorias.objects.all()
-    # Obtener todos los eventos desde la base de datos
-    eventos = nuevoEvento.objects.all()
-    categorias = Categorias.objects.all()
-    # si el request es POST, se crea el evento
-    if request.method == "POST":
-        if "eventAdd" in request.POST:
-            nombre = request.POST['nombre']
-            host = User.objects.get(username=request.user.username)
-            fecha = request.POST['fecha']
-            hora = request.POST['hora']
-            lugar = request.POST['lugar']
-            descripcion = request.POST['descripcion']
-            categoria = Categorias.objects.get(nombre=request.POST["selector_categoria"])
-            imagen = request.FILES.get('imagen', None)
-            nuevo_evento = nuevoEvento(nombre=nombre, host=host, fecha=fecha, hora=hora, lugar=lugar, descripcion=descripcion, categoria=categoria, imagen=imagen)
-            nuevo_evento.save()
-            return redirect('perfil_apagno_app')
-
-    if request.method == "GET":
-        return render(request, 'perfil_app/creacionEvento.html', {"eventos": mis_eventos, "categorias": categorias})
-    
-   
 
 def evento_update(request, id):
     evento = nuevoEvento.objects.get(id=id)
