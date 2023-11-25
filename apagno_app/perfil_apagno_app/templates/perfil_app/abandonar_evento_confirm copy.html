@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/destacados.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'style/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'style/cajon.css' %}">
+{% endblock %}
+
+{%block content%}
+<div class="adaptive-container text-center" style="margin-top: 2em">
+	<form method="post">
+		{% csrf_token %}
+		<h2 style="color:#b81616">Abandonar evento</h2>
+		<p class="h4">¿Estás seguro de que quieres abandonar el evento "{{evento.nombre}}"?</p>
+		<p class="cajon-buttons">
+			<input style="width: 50%;" type="submit" class="btn btn-danger" value="Eliminar">
+			<a style="margin: 10px 0; width: 50%;" href="{% url 'evento' evento.id %}" class="btn btn-outline-primary">Cancelar</a>
+		</p>
+	</form>
+</div>
+
+{%endblock content%}

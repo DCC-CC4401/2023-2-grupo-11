@@ -32,9 +32,9 @@
          </div>
          <div class="login-buttons">
             {% if user.is_authenticated %}
-               <a href="{% url 'logout' %}"> <button type="submit"> Cerrar sesión </button></a>
+               <a href="{% url 'logout' %}"> Cerrar Sesión </a>
             {% else %}
-               <a href="{% url 'register_user' %}"> <button type="submit"> Registrarse</button></a>
+               <a href="{% url 'register_user' %}"> Registrarse </a>
             {% endif %}
          </div>
       </div>
