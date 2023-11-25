@@ -1,5 +1,6 @@
-from django.http import HttpResponse, HttpResponseBadRequest
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
+from django.urls import reverse
+from django.shortcuts import render, get_object_or_404, redirect
 from perfil_apagno_app.models import nuevoEvento
 from datetime import datetime, time
 from perfil_apagno_app.models import nuevoEvento
@@ -61,6 +62,7 @@ def destacados_logged(request):
             evento = get_object_or_404(nuevoEvento, id=evento_id)
             print(evento.asistentes.all())
             evento.asistentes.add(request.user)
+            return HttpResponseRedirect(reverse('eventos_destacados'))
     
     
     return render(request, "destacados.html", {'eventos': eventos})
