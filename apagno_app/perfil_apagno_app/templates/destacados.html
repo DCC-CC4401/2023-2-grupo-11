@@ -95,7 +95,7 @@
                 <form method="post"> 
                     {% csrf_token %}
                     <input type="hidden" id="eventoId" name ="eventoId" value="{{ evento.id }}">
-                    <button type="submit" name="apano_form">Apaño</button>
+                    <button type="submit" name="apano_form" class="submit-button">Apaño</button>
                 </form>
             </div>
         {% endfor %}
