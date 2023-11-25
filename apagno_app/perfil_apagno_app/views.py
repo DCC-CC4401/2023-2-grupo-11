@@ -162,6 +162,20 @@ class EventoDelete(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         base_qs = super(EventoDelete, self).get_queryset()
         return base_qs.filter(host=self.request.user)
+    
+class AbandonarEventoView(UpdateView):
+    model = nuevoEvento
+    template_name = 'perfil_app/abandonar_evento_confirm copy.html'
+    context_object_name = 'evento'
+    fields = []  # You can leave this empty since you're not updating any fields directly
+
+    def form_valid(self, form):
+        user_to_remove = self.request.user  # You can customize this based on your authentication system
+        self.object.asistentes.remove(user_to_remove)
+        return super(AbandonarEventoView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('perfil')
 
 
 class MyProfile(LoginRequiredMixin, View):
