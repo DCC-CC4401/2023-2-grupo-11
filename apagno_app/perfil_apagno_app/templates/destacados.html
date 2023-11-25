@@ -15,12 +15,10 @@
     <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
 {% endblock %}
 
-{% block navbar %}
     <!-- incluir el botón "Crear Evento" solo si el usuario está autenticado -->
     <div id="crear-evento">
         <a href="#">Crear Evento</a>
     </div>
-{% endblock %}
 
 {% block content %}
 <div class="container"></div>
@@ -136,9 +134,10 @@
                     <label for="tipo">Tipo de Evento:</label>
                     <select name="tipo" id="tipo" class="select-input">
                         <option value="">Todos los tipos</option>
-                        <option value="concierto">Concierto</option>
-                        <option value="exposicion">Exposición</option>
-                        <option value="deporte">Deporte</option>
+                        <option value="Concierto">Concierto</option>
+                        <option value="Viaje">Viaje</option>
+                        <option value="Evento a beneficio">Evento a beneficio</option>
+                        <option value="Junta">Junta</option>
                     </select>
             
                     <label for="fecha">Fecha:</label>
@@ -203,7 +202,24 @@
         {% endfor %}
     </div>
 
-<!-- Modal de eventos-->
+    <!-- Paginación -->
+    <div class="pagination" style="display: flex; justify-content: center; margin-top: 20px;">
+        <span class="step-links">
+            {% if eventos.has_previous %}
+                <a href="?page=1" style="color: #06836c; padding: 10px; text-decoration: none; border: 1px solid #06836c; border-radius: 4px; margin: 0 5px;">&laquo; Primero</a>
+                <a href="?page={{ eventos.previous_page_number }}" style="color: #06836c; padding: 10px; text-decoration: none; border: 1px solid #06836c; border-radius: 4px; margin: 0 5px;">Anterior</a>
+            {% endif %}
+
+            <span class="current" style="color: #fff; background-color: #06836c; padding: 10px; border: 1px solid #06836c; border-radius: 4px; margin: 0 5px;">
+                Página {{ eventos.number }} de {{ eventos.paginator.num_pages }}.
+            </span>
+
+            {% if eventos.has_next %}
+                <a href="?page={{ eventos.next_page_number }}" style="color: #06836c; padding: 10px; text-decoration: none; border: 1px solid #06836c; border-radius: 4px; margin: 0 5px;">Siguiente</a>
+                <a href="?page={{ eventos.paginator.num_pages }}" style="color: #06836c; padding: 10px; text-decoration: none; border: 1px solid #06836c; border-radius: 4px; margin: 0 5px;">Último &raquo;</a>
+            {% endif %}
+        </span>
+</div>
 <div class="modal fade" id="eventoModal" tabindex="-1" role="dialog" aria-labelledby="eventoModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -216,7 +232,7 @@
             <div class="modal-body">
                 <!-- Mostrar los detalles del evento -->
                 <p id="eventoFechaHora">
-                    📅⏰ <!-- Emoji de reloj -->
+                    📅 <!-- Emoji de reloj -->
                 </p>
                 <p id="eventoLugar">
                     📍 <!-- Emoji de chincheta -->
@@ -268,12 +284,8 @@
         //Agrega id del evento al formulario
         $('#eventoId').val(id);
     });
+    
 </script>
-
-
-    </div>
-    <button id="mostrar-mas">Mostrar Más</button>
-</div>
 
 {% endblock %}
 

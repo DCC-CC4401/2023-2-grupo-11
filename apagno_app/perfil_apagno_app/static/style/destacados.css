@@ -74,7 +74,7 @@ body {
 #mostrar-mas {
     display: block;
     margin: 0 auto;
-    background-color: #008000; /* Cambia el color de fondo a verde */
+    background-color: #06836c; /* Cambia el color de fondo a verde */
     color: #fff; /* Cambia el color del texto a blanco */
     padding: 10px 20px;
     font-size: 18px;
@@ -86,30 +86,31 @@ body {
 #crear-evento {
     display: block;
     margin: 0 auto;
-    background-color: #008000; /* Cambia el color de fondo a verde */
+    background-color: #06836c; /* Cambia el color de fondo a verde */
     color: #fff; /* Cambia el color del texto a blanco */
     padding: 10px 20px;
     font-size: 18px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .form-group {
-    margin-right: 3cm; /* Agrega un margen derecho */
+    margin-left: 3cm; /* Agrega un margen derecho */
 }
 
 .select-input {
     width: 200px; /* Ancho deseado para los campos select */
     padding: 5px;
-    border: 1px solid #ebd889;
+    border: 1px solid #06836c;
     border-radius: 4px;
 }
 
 .date-input {
     width: 200px; /* Ancho deseado para el campo de fecha */
     padding: 5px;
-    border: 1px solid #ffffff;
+    border: 1px solid #06836c;
     border-radius: 4px;
 }
 
@@ -158,6 +159,36 @@ body {
     content: "👤 "; /* Emoji de usuario */
 }
 
+/* Estilos para la Paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.step-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.step-links a {
+    color: #06836c;
+    padding: 10px;
+    text-decoration: none;
+    border: 1px solid #06836c;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.step-links .current {
+    color: #fff;
+    background-color: #06836c;
+    padding: 10px;
+    border: 1px solid #06836c;
+    border-radius: 4px;
+    margin: 0 5px;
+}
 
 
 
