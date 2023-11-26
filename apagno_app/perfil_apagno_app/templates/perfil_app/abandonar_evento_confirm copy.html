@@ -17,8 +17,8 @@
 		<h2 style="color:#b81616">Abandonar evento</h2>
 		<p class="h4">¿Estás seguro de que quieres abandonar el evento "{{evento.nombre}}"?</p>
 		<p class="cajon-buttons">
-			<input style="width: 50%;" type="submit" class="btn btn-danger" value="Eliminar">
-			<a style="margin: 10px 0; width: 50%;" href="{% url 'evento' evento.id %}" class="btn btn-outline-primary">Cancelar</a>
+			<input style="width: 50%;" type="submit" class="btn btn-danger" value="Abandonar">
+			<a style="margin: 10px 0; width: 50%;" href="{% url 'perfil' %}" class="btn btn-outline-primary">Cancelar</a>
 		</p>
 	</form>
 </div>

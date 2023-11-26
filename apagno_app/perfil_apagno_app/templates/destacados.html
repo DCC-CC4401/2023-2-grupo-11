@@ -23,7 +23,7 @@
 {% block content %}
 <div class="container"></div>
     <div class="py-5 text-center">
-        <h2 class="display" style="font-size: 36px; color: #0e7e6d; margin-bottom: 20px; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Destacados de la Semana</h2>
+        <h2 class="display" style="font-size: 36px; color: #0e7e6d; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Destacados de la Semana</h2>
     </div>
     <!-- Button trigger modal -->
     <div class="crear-evento">
@@ -126,33 +126,32 @@
 
     
         <!-- Formulario de filtro aquí -->
-        <div class="form-group">
+        <div class="form-group text-center" style="margin-top: 20px;">
             <form method="GET" action="{% url 'destacados_logged' %}">
                     <label for="tipo">Tipo de Evento:</label>
                     <select name="tipo" id="tipo" class="select-input">
                         <option value="">Todos los tipos</option>
-                        <option value="Concierto">Concierto</option>
-                        <option value="Viaje">Viaje</option>
-                        <option value="Evento a beneficio">Evento a beneficio</option>
-                        <option value="Junta">Junta</option>
+						{% for categoria in categorias %}
+							<option value="{{ categoria.nombre }}" {% if request.GET.tipo == categoria.nombre %} selected {% endif %}>{{ categoria.nombre }}</option>
+						{% endfor %}
                     </select>
             
                     <label for="fecha">Fecha:</label>
-                    <input type="date" name="fecha" id="fecha" class="date-input">
+                    <input type="date" name="fecha" id="fecha" class="date-input" value="{{ request.GET.fecha|default_if_none:'' }}">
             
                     <label for="hora">Hora:</label>
                     <select name="hora" id="hora" class="select-input">
-                        <option value="">Cualquier hora</option>
-                        <option value="6-14">6h a 14h</option>
-                        <option value="14-20">14h a 20h</option>
-                        <option value="20-6">20h a 6h</option>
+                        <option value="" {% if request.GET.hora == "" %} selected {% endif %}>Cualquier hora</option>
+                        <option value="6-14" {% if request.GET.hora == "6-14" %} selected {% endif %}>6h a 14h</option>
+                        <option value="14-20" {% if request.GET.hora == "14-20" %} selected {% endif %}>14h a 20h</option>
+                        <option value="20-6" {% if request.GET.hora == "20-6" %} selected {% endif %}>20h a 6h</option>
                     </select>
             
                     <label for="estado">Estado:</label>
                     <select name="estado" id="estado" class="select-input">
-                        <option value="">Todos</option>
-                        <option value="terminado">Evento Terminado</option>
-                        <option value="sin_comenzar">Evento Sin Comenzar</option>
+                        <option value="" {% if request.GET.estado == "" %} selected {% endif %}>Todos</option>
+                        <option value="terminado" {% if request.GET.estado == "terminado" %} selected {% endif %}>Evento Terminado</option>
+                        <option value="sin_comenzar" {% if request.GET.estado == "sin_comenzar" %} selected {% endif %}>Evento Sin Comenzar</option>
                     </select>
             
                 <button type="submit" class="submit-button">Aplicar Filtro</button>
@@ -160,12 +159,12 @@
         </div>
 
         <!-- Formulario para ordenar -->
-        <div class="form-group">
+        <div class="form-group text-center">
             <form method="GET" id="orden_form" action="{% url 'destacados_logged' %}">
                 <label for="orden">Ordenar por:</label>
                 <select name="orden" id="orden" class="select-input">
-                    <option value="fecha_asc">Fecha ascendente</option>
-                    <option value="fecha_desc">Fecha descendente</option>
+                    <option value="fecha_desc" {% if request.GET.orden == "fecha_desc" %} selected {% endif %}>Fecha descendente</option>
+                    <option value="fecha_asc" {% if request.GET.orden == "fecha_asc" %} selected {% endif %}>Fecha ascendente</option>
                 </select>
                 <button type="submit" class="submit-button">Aplicar orden</button>  <!-- Este botón está oculto para el envío automático -->
             </form>
