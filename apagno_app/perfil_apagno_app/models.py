@@ -42,6 +42,10 @@ class nuevoEvento(models.Model):
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+# Profile model:
+# Tiene un campo de usuario y un campo de avatar.
+# El avatar es una imagen que se puede subir desde el perfil.
+# El avatar se guarda en la carpeta profile_pics.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(

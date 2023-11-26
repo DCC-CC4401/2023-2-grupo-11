@@ -55,7 +55,8 @@ def login_user(request):
             return HttpResponseRedirect(reverse('eventos_destacados')) #'testeo2')
         else:
             return HttpResponseRedirect('register')
-        
+
+# request para logout del usuario     
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse('eventos_destacados'))#'crear_evento')
@@ -86,7 +87,7 @@ def creacionEvento(request):
             nuevo_evento.save()
             return redirect('/eventos_destacados')
 
-
+# request para la edicion del evento en el html
 def evento_update(request, id):
     evento = nuevoEvento.objects.get(id=id)
 
@@ -104,6 +105,7 @@ def evento_update(request, id):
 
 
 ##----
+# Clase para la diferenciacion de eventos hosteados y eventos a los que asiste el usuario
 class Eventos(ListView):
     model = nuevoEvento
     template_name = 'perfil_app/listaEventos.html'
@@ -147,7 +149,7 @@ class Eventos(ListView):
             nuevo_evento.save()
             return redirect('/perfil_apagno_app')
     
-
+# Clase para detalle de evento
 class EventoDetail(DetailView):
     model = nuevoEvento
     template_name = 'perfil_app/evento.html'
@@ -157,6 +159,7 @@ class EventoDetail(DetailView):
         base_qs = super(EventoDetail, self).get_queryset()
         return base_qs.filter()
 
+# Clase para editar evento
 class EventoUpdate(UpdateView):
     model = nuevoEvento
     template_name = 'perfil_app/editarEvento.html'
@@ -171,6 +174,7 @@ class EventoUpdate(UpdateView):
         base_qs = super(EventoUpdate, self).get_queryset()
         return base_qs.filter(host=self.request.user)
 
+# Clase para eliminar evento
 class EventoDelete(LoginRequiredMixin, DeleteView):
     model = nuevoEvento
     template_name = 'perfil_app/elim_evento_confirm.html'
@@ -185,6 +189,7 @@ class EventoDelete(LoginRequiredMixin, DeleteView):
         base_qs = super(EventoDelete, self).get_queryset()
         return base_qs.filter(host=self.request.user)
     
+# Clase para abandonar evento
 class AbandonarEventoView(UpdateView):
     model = nuevoEvento
     template_name = 'perfil_app/abandonar_evento_confirm copy.html'
@@ -199,7 +204,7 @@ class AbandonarEventoView(UpdateView):
     def get_success_url(self):
         return reverse_lazy('perfil')
 
-
+# Clase para el perfil de usuario
 class MyProfile(LoginRequiredMixin, View):
     def get(self, request):
         user_form = UserUpdateForm(instance=request.user)

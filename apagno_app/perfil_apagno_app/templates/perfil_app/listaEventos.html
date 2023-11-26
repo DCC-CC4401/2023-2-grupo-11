@@ -1,3 +1,9 @@
+<!-- Enlaces a Bootstrap CSS y JS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 {%extends 'base.html'%}
 
 {% load static %}
@@ -53,9 +59,82 @@
 						<p class="cajon-description">Lugar: {{ evento.lugar }}</p>
 					</div>
 					<div class="cajon-buttons-event">
-						<a href="{%url 'evento' evento.id %}"> <button class="cajon-button-event edit">Ver</button></a>
+						<button class="cajon-button-event edit" type="submit" data-toggle="modal" data-target="#eventoModal"
+						data-id="{{ evento.id }}"
+                		data-nombre="{{ evento.nombre }}" data-fecha="{{ evento.fecha }}" data-hora="{{ evento.hora }}" data-descripcion="{{ evento.descripcion }}"
+                		data-host="{{ evento.host }}" data-lugar="{{ evento.lugar }}" data-categoria="{{ evento.categoria }}" data-imagen="{{ evento.imagen.url }}">Ver</button></a>
 						<a href="{%url 'abandonar_evento' evento.id %}"> <button class="cajon-button-event delete">Abandonar</button></a>
 					</div>
+
+					<div class="modal fade" id="eventoModal" tabindex="-1" role="dialog" aria-labelledby="eventoModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="eventoModalLabel"></h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<!-- Mostrar los detalles del evento -->
+									<p id="eventoFechaHora">
+										📅 <!-- Emoji de reloj -->
+									</p>
+									<p id="eventoLugar">
+										📍 <!-- Emoji de chincheta -->
+									</p>
+									<p id="eventoHost">
+										&#128100; <!-- Emoji de usuario -->
+									</p>
+									<p><strong>Descripción:</strong></p>
+									<p id="eventoDescripcion"></p>
+					
+								</div>
+								<div class="modal-footer">
+									<p id="eventoImagen"></p>
+									<!-- <form method="post" name="apaño_form"> 
+										{% csrf_token %}
+										<input type="hidden" id="eventoId">
+										<button type="submit" class="btn btn-success" data-dismiss="modal">Apaño</button>
+									</form> -->
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<script>
+						// Capturar el evento al hacer click en el boton Ver
+						$('.cajon-buttons-event .edit').click(function () {
+							console
+							// Obtener los datos del evento desde los atributos de datos personalizados
+							var id = $(this).data('id');
+							var nombre = $(this).data('nombre');
+							var fecha = $(this).data('fecha');
+							var hora = $(this).data('hora');
+							var host = $(this).data('host');
+							var lugar = $(this).data('lugar');
+							var descripcion = $(this).data('descripcion');
+							var categoria = $(this).data('categoria');
+							var imagen = $(this).data('imagen');
+							// Concatenar la fecha y la hora
+							var fechaHora = fecha + ' - ' + hora;
+					
+							// Actualizar el contenido del modal con los datos del evento
+							$('#eventoModalLabel').text(nombre);
+							$('#eventoNombre').text(nombre);
+							$('#eventoFechaHora').text(fechaHora);
+							$('#eventoHost').text(host);
+							$('#eventoLugar').text(lugar);
+							$('#eventoDescripcion').text(descripcion);
+							$('#eventoCategoria').text(categoria);
+							$('#eventoImagen').html('<img src="' + imagen + '" alt="' + nombre + '" style="width: 100%; height: auto;">');
+					
+							//Agrega id del evento al formulario
+							$('#eventoId').val(id);
+						});
+					</script>
+					
 				</div>
 			{% endfor %}
 			{% else %}
@@ -313,35 +392,5 @@
 	{% endif %}
 	</ul>
 </div>
-
-<script>
-	// Capturar el evento al hacer click en la imagen
-	$('#eventos-container .evento img').click(function () {
-		console
-		// Obtener los datos del evento desde los atributos de datos personalizados
-		var id = $(this).data('id');
-		var nombre = $(this).data('nombre');
-		var fecha = $(this).data('fecha');
-		var hora = $(this).data('hora');
-		var host = $(this).data('host');
-		var lugar = $(this).data('lugar');
-		var descripcion = $(this).data('descripcion');
-		var categoria = $(this).data('categoria');
-		// Concatenar la fecha y la hora
-		var fechaHora = fecha + ' - ' + hora;
-
-		// Actualizar el contenido del modal con los datos del evento
-		$('#eventoModalLabel').text(nombre);
-		$('#eventoNombre').text(nombre);
-		$('#eventoFechaHora').text(fechaHora);
-		$('#eventoHost').text(host);
-		$('#eventoLugar').text(lugar);
-		$('#eventoDescripcion').text(descripcion);
-		$('#eventoCategoria').text(categoria);
-
-		//Agrega id del evento al formulario
-		$('#eventoId').val(id);
-	});
-</script>
 
 {%endblock content%}

@@ -26,12 +26,13 @@ class NuevoEventoForm(forms.ModelForm):
             'imagen': forms.FileInput(attrs={'class':'form-control'}),
         }
 
-# for profile update
+# for user update en profile
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name','last_name','nickname','pronouns','email','contact']
-        
+
+# for profile update
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile

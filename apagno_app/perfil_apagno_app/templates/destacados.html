@@ -185,7 +185,7 @@
                 <img src="{{ evento.imagen.url }}" alt="{{ evento.nombre }}" data-toggle="modal" data-target="#eventoModal" 
                 data-id="{{ evento.id }}"
                 data-nombre="{{ evento.nombre }}" data-fecha="{{ evento.fecha }}" data-hora="{{ evento.hora }}" data-descripcion="{{ evento.descripcion }}"
-                data-host="{{ evento.host }}" data-lugar="{{ evento.lugar }}" data-categoria="{{ evento.categoria }}">
+                data-host="{{ evento.host }}" data-lugar="{{ evento.lugar }}" data-categoria="{{ evento.categoria }}" data-imagen="{{ evento.imagen.url }}">
                 <p>{{ evento.fecha }}</p>
                 <form method="post"> 
                     {% csrf_token %}
@@ -241,6 +241,7 @@
 
             </div>
             <div class="modal-footer">
+                <p id="eventoImagen"></p>
                 <!-- <form method="post" name="apaño_form"> 
                     {% csrf_token %}
                     <input type="hidden" id="eventoId">
@@ -265,6 +266,7 @@
         var lugar = $(this).data('lugar');
         var descripcion = $(this).data('descripcion');
         var categoria = $(this).data('categoria');
+        var imagen = $(this).data('imagen');
         // Concatenar la fecha y la hora
         var fechaHora = fecha + ' - ' + hora;
 
@@ -276,6 +278,7 @@
         $('#eventoLugar').text(lugar);
         $('#eventoDescripcion').text(descripcion);
         $('#eventoCategoria').text(categoria);
+        $('#eventoImagen').html('<img src="' + imagen + '" alt="' + nombre + '" style="width: 100%; height: auto;">');
 
         //Agrega id del evento al formulario
         $('#eventoId').val(id);
