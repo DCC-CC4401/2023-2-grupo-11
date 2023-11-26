@@ -30,7 +30,7 @@ class NuevoEventoForm(forms.ModelForm):
 class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['email']
+        fields = ['first_name','last_name','nickname','pronouns','email','contact']
         
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
