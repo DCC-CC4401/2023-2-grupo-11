@@ -22,12 +22,32 @@
 	    <p class="text-center"><a href="mailto:{{user.email}}">{{user.email}}</a></p>
 		<hr>
 		
+		<label for="first_name" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="first_name" name="first_name" value="{{user.first_name}}" required>
+
+		<label for="last_name" class="form-label">Apellidos</label>
+    	<input type="text" class="form-control" id="last_name" name="last_name" value="{{user.last_name}}" required>
+
+		<label for="nickname" class="form-label">Apodo</label>
+        <input type="text" class="form-control" id="nickname" name="nickname" value="{{user.nickname}}" required>
+
+		<label for="pronouns" class="form-label">Pronombre</label>
+        <select id="pronouns" class="form-control" name="pronouns" required>
+            <option class="disabled" value="">Elige un pronombre</option>
+            <option value="El" {% if user.pronouns == "El" %} selected {% endif %}>El</option>
+            <option value="La" {% if user.pronouns == "La" %} selected {% endif %}>La</option>
+            <option value="Le" {% if user.pronouns == "Le" %} selected {% endif %}>Le</option>
+            <option value="Otro" {% if user.pronouns == "Otro" %} selected {% endif %}>Otro</option>
+        </select>
+
 		<label for="email" class="form-label">Email Address:</label>
 		<input type="email" id="email" class="form-control" name="email" value="{{user.email}}" required/>
-			
-		
+	
+		<label for="contact" class="form-label">Contacto</label>
+        <input type="text" class="form-control" id="contact" name="contact" value="{{user.contact}}" required>
+
 		<label for="avatar" class="form-label">Avatar:</label>
-		<input type="file" class="form-control" name="avatar" id="avatar">	
+		<input type="file" class="form-control" name="avatar" id="avatar">
 		
     <div class="column text-center" style="margin-top: 15px;">
       <div class="col-2">

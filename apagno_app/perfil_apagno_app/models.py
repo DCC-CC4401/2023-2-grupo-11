@@ -13,7 +13,7 @@ class User(AbstractUser):
     pronounsChoices = [('La','La'),('El','El'), ('Le','Le'),('Otro','Otro')]
     pronouns = models.CharField(max_length=5,choices=pronounsChoices)
     nickname = models.CharField(max_length=30)
-    contact = models.CharField(max_length=100, blank=True)
+    contact = models.CharField(max_length=20, blank=True)
     
 # Categorias crea una lista de categorias modificable desde el administrador de Django
 # las categorias corresponden a los tipos de eventos posibles (a acordar)
