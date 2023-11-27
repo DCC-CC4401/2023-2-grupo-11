@@ -164,7 +164,7 @@ class EventoUpdate(UpdateView):
     model = nuevoEvento
     template_name = 'perfil_app/editarEvento.html'
     fields = ['nombre', 'categoria', 'fecha', 'hora', 'lugar', 'descripcion', 'imagen']
-    success_url = '/eventos_destacados'
+    success_url = '/perfil_apagno_app'
 
     def form_valid(self, form):
         messages.success(self.request, 'Evento modificado exitosamente')

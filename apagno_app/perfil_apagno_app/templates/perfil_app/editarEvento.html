@@ -19,7 +19,7 @@
     </div>
 
     <div class="adaptive-container">
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
              <!-- Campo Nombre -->
             <div class="form-group">
@@ -66,7 +66,7 @@
             <!-- Campo Imagen -->
             <div class="form-group">
                 <label for="{{ form.imagen.id_for_label }}">{{ form.imagen.label }}</label>
-                <input type="file" id="{{ form.imagen.id_for_label }}" name="{{ form.imagen.name }}" class="form-control-file">
+                <input type="file" id="{{ form.imagen.id_for_label }}" name="{{ form.imagen.name }}" class="form-control">
                 {% if form.imagen.value %}
                     <br>
                     <label>Imagen Actual:</label>
