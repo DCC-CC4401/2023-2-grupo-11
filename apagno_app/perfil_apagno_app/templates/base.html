@@ -13,10 +13,11 @@
         <a id="logo" href="/eventos_destacados">
             <img src="{% static 'imag/logo_sin_fondo.png' %}" alt="Logo">
         </a>
+        <!--Funcionalidad descartada, pero se mantiene el código por si se quiere implementar en un futuro
         <div id="search">
             <input type="text" placeholder="Buscar eventos por palabra">
             <button type="submit">Buscar</button>
-        </div>
+        </div>-->
         <div class="login-buttons">
             {% if user.is_authenticated %}
                 <a href="{% url 'perfil' %}"> Perfil </a>
