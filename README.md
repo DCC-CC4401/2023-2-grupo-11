@@ -6,7 +6,7 @@ Este proyecto "Apaño" consiste en una página web de eventos desarrollada en Dj
 
 1. Crear un usuario y logearse
 
-El ususario puede crear una cuenta por medio de la página de registro y logearse por medio de la pagina de login.
+El usuario puede crear una cuenta por medio de la página de registro y logearse por medio de la pagina de login.
 
 2. Acceso al perfil de usuario
 
@@ -69,7 +69,7 @@ Para correr la aplicación, se debe invocar el siguiente comando desde la carpet
 python manage.py runserver
 ```
 
-Se iniciará la aplicacion en la dirección *http://localhost:8000/*, la cual de momento no esta seteada como pagina principal. A continuacion se muestran los links operativos:
+Se iniciará la aplicación en la dirección *http://localhost:8000/*, la cual de momento no esta seteada como pagina principal. A continuación, se muestran los links operativos:
 - *http://localhost:8000/eventos_destacados-logged/* Página principal, donde se muestran los eventos.
 - *http://localhost:8000/perfil_apagno_app/crear_evento* Formulario de creación de evento.
 - *http://localhost:8000/perfil_apagno_app/register* Formulario de registro en la aplicación.
