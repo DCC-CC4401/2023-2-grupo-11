@@ -1,4 +1,4 @@
 asgiref 
-Django 
+Django==4.1
 pytz 
 sqlparse 
