@@ -1,6 +1,6 @@
 # README
 # 2023-2-grupo-11
-Este proyecto "Apaño" consiste en una página web de eventos desarrollada en Django, que los usuarios planificar, organizar, gestionar y apuntarse a eventos propuestos por el resto de la comunidad. A continuación, se describen las principales características y funcionalidades de la aplicación.
+Este proyecto "Apaño" consiste en una página web de eventos desarrollada en el framework Django version 4.1, donde los usuarios pueden planificar, organizar, gestionar y apuntarse a eventos propuestos por el resto de la comunidad. A continuación, se describen las principales características y funcionalidades de la aplicación.
 
 ## Funcionalidades principales
 
